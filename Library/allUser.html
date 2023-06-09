@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/allUser.css" type="text/css">
+
+</head>
+<body>
+    <div id = "total">
+        <div class = "aside">
+            <div class = "aside__info">
+                <div class = "aside__info__logo">
+                    <a href="library.html">BipaLibrary</a>
+                </div>
+                <div class = "aside__info__userInfo">
+                    <p>양승아 님의 데이터입니다. </p>
+                    <h6>대출 권수 : 4권</h6>
+                    <h6>예약 권수 : 2권</h6>
+                    <h6>연체일 : 3일</h6>
+                </div>
+            </div>
+            <div class = "aside__menu">
+                <h3>Menu</h3>
+                <hr>
+                <a href="library.html" style = "color:#919191;">창구 서비스</a>
+                <hr>
+                <a href="allUser.html" style = "color:blue;">전체 회원 조회</a>
+            </div>
+        </div>
+
+        <div class = "container">
+            <div class = "container__menu">
+                <p style="font-weight: bold;" >
+                    <a href="allUser.html" style="color: blue;">전체 대출 현황</a>
+                </p>
+
+                <p> | </p>
+
+                <p>
+                    <a href="allUser2.html">연체 회원 현황</a>
+                </p>
+
+                <p> | </p>
+
+                <p>
+                    <a href="allUser3.html">금일 반납예정도서</a>
+                </p>
+            </div>
+            <div class = "container__books">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>userId</th>
+                            <th>도서코드</th>
+                            <th>도서명</th>
+                            <th>저자</th>
+                            <th>반납일</th>
+                            <th>연체일</th>
+                            <th>분류</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>유저1</td>
+                            <td class="book-id">1</td>
+                            <td><a href="">책1</a></td>
+                            <td>저자1</td>
+                            <td>2023-06-05</td>
+                            <td>3</td>
+                            <td>분류1</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저2</td>
+                            <td class="book-id">2</td>
+                            <td><a href="">책2</a></td>
+                            <td>저자2</td>
+                            <td>2023-06-09</td>
+                            <td>0</td>
+                            <td>분류1</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저3</td>
+                            <td class="book-id">3</td>
+                            <td><a href="">책3</a></td>
+                            <td>저자3</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류3</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저4</td>
+                            <td class="book-id">4</td>
+                            <td><a href="">책4</a></td>
+                            <td>저자4</td>
+                            <td>2023-06-10</td>
+                            <td>0</td>
+                            <td>분류1</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저5</td>
+                            <td class="book-id">5</td>
+                            <td><a href="">책5</a></td>
+                            <td>저자2</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류2</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저6</td>
+                            <td class="book-id">6</td>
+                            <td><a href="">책6</a></td>
+                            <td>저자6</td>
+                            <td>2023-06-11</td>
+                            <td>0</td>
+                            <td>분류3</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저7</td>
+                            <td class="book-id">7</td>
+                            <td><a href="">책7</a></td>
+                            <td>저자7</td>
+                            <td>2023-06-04</td>
+                            <td>4</td>
+                            <td>분류7</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저8</td>
+                            <td class="book-id">8</td>
+                            <td><a href="">책8</a></td>
+                            <td>저자8</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류1</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저9</td>
+                            <td class="book-id">9</td>
+                            <td><a href="">책9</a></td>
+                            <td>저자9</td>
+                            <td>2023-06-09</td>
+                            <td>0</td>
+                            <td>분류3</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저10</td>
+                            <td class="book-id">10</td>
+                            <td><a href="">책10</a></td>
+                            <td>저자10</td>
+                            <td>2023-06-07</td>
+                            <td>1</td>
+                            <td>분류2</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저11</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-09</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저12</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저13</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저14</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-09</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저15</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저16</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-11</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저17</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-07</td>
+                            <td>1</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저18</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-11</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저19</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-12</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저20</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저21</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저20</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저21</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저20</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저21</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저20</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+                        <tr>
+                            <td>유저21</td>
+                            <td class="book-id">11</td>
+                            <td><a href="">책11</a></td>
+                            <td>저자11</td>
+                            <td>2023-06-08</td>
+                            <td>0</td>
+                            <td>분류4</td>
+                            <td>대여중</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
