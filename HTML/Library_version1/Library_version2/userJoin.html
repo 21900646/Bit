@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+        <link rel="stylesheet" href="css/common.css" type="text/css">
+        <link rel="stylesheet" href="css/userJoin.css" type="text/css">
+    </head>
+
+    <body>
+        <div id = "total">
+            <div class = "aside">
+                <div class = "aside__info__logo">BipaLibrary</div>
+            </div>
+            <div class = "container">
+                <div class = "container__userInfoName">
+                    <p> 아이디 </p>
+                    <p> 비밀번호 </p>
+                    <p> 비밀번호 확인 </p>
+                    <p> 이름 </p>
+                    <p> 전화번호 </p>
+                    <p> 주소 </p>
+                    <p> 이메일 </p>
+                </div>
+                <div class = "container__userInput">
+                    <input id = "id" placeholder = "  아이디를 입력해주세요 (6 -  20자 이내)">
+                    <button id = "sameCheck">중복 확인</button>
+                    <p id = "idError"></p>
+                    <input id = "pwd" placeholder = "  비밀번호를 입력해주세요 (문자, 숫자, 특수문자 포함 8~20자 이내)">
+                    <p id = "pwdError"></p>
+                    <input id = "pwdCheck" placeholder = "  비밀번호를 재입력해주세요">
+                    <p id = "pwdCheckError"></p>
+                    <input id = "name" placeholder = "  이름을 입력해주세요">
+                    <input id = "phoneNum" placeholder = "  전화번호를 입력하세요.">
+                    <input id = "address" placeholder = "  주소를 입력하세요.">
+                    <input id = "email" placeholder = "  이메일을 입력하세요.">
+                    <div class = "container__userInput__birth">
+                        <select name="birth_year">
+                            <option value="">년도</option>
+                            <option>2000</option>
+                            <option>2001</option>
+                        </select>
+                        <select name="birth_month">
+                            <option value="">월</option>
+                            <option>1월</option>
+                            <option>2월</option>
+                            <option>3월</option>
+                            <option>4월</option>
+                            <option>5월</option>
+                            <option>1월</option>
+                            <option>1월</option>
+                            <option>1월</option>
+                            <option>1월</option>
+                            <option>1월</option>
+                            <option>2001</option>
+                        </select>
+                        <select name="birth_day">
+                            <option value="">일</option>
+                            <option>2000</option>
+                            <option>2001</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "container__button">
+            <button> 회원 가입하기 </button>
+        </div>
+    </body>
+    <script src="js/userJoin.js"></script>
+</html>
