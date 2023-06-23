@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+        <link rel="stylesheet" href="css/common.css" type="text/css">
+        <link rel="stylesheet" href="css/library.css" type="text/css">
+        <link rel="stylesheet" href="css/servicePopup.css" type="text/css">
+        
+
+    </head>
+    <body>
+        <div id = "total">
+            <div class = "aside">
+                <div class = "aside__info">
+                    <div class = "aside__info__logo">
+                        <a href="library.html">BipaLibrary</a>
+                    </div>
+                    <div class = "aside__inafo__userInfo">
+                        <p> 님의 데이터입니다. </p>
+                        <h6>대출 권수 : 권</h6>
+                        <h6>예약 권수 : 권</h6>
+                        <h6>연체일 : 일</h6>
+                    </div>
+                </div>
+                <div class = "aside__menu">
+                    <h3>Menu</h3>
+                    <hr>
+                    <a href="library.html" style = "color:blue;">창구 서비스</a>
+                    <hr>
+                    <a href="allUser.html" style = "color:#919191;">전체 회원 조회</a>
+                </div>
+            </div>
+
+            <div class = "container">
+                <div class = "container__search">
+                    <input class="search-input" type="text" name="firstname" placeholder="Enter user ID ..">
+                    <button class="search-button">Search</button>
+                </div>
+                <div class = "container__menu">
+                    <p style="font-weight: bold;">
+                        <button class="service-button service-rental-button">대출 내역</button>
+                    </p>
+
+                    <p> | </p>
+
+                    <p>
+                        <button class="service-button service-reserv-button">예약 내역</button>
+                    </p>
+                </div>
+                <div id = "tagArea">
+                    
+                </div>
+                <div class = "container__button">
+                    <button class="final-button"> 대출 / 반납하기</button>
+                    <!-- <button class="reservation__button">예약</button>
+                    <button class="reservation__button"> 예약 취소</button> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-container">
+            <div class="popup-wrap">
+                <div class="popup">
+                    <div class="popup-head">
+                        <!-- <div class = "container__search__popup">
+                            <input class="search-input-popup" type="text" name="firstname" placeholder="Enter user ID ..">
+                            <button class="search-button__popup">Search</button>
+                        </div> -->
+                    </div>
+                    <div class="popup-body">
+                        <!-- <div id = "tagAreaPopup"> -->
+                            <!-- <div class = "container__bookInfo__popup">
+    
+                                <div class = "bookImg__popup">
+                                    <img src="" alt="" width="57px" style="margin-left:7px;">
+                                </div>
+
+                                <div class="book__detail__popup">
+                                    <div class="book__detail__left__side">
+                                    <p>${book.book_no}</p>
+                                    <p class = "title__popup">${book.name}</p>
+                                    </div>
+                                    <div class="book__detail__right__side">
+                                    <p>반납일 : ${rental.return_date}</p>
+                                    <p class = ${rental.penalty_time}>연체일 : - </p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        <!-- </div> -->
+                    </div>
+                    <div class="button-group-footer__popup">
+                        <button class="close-button">닫기</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="js/book.js"></script>
+        <script src="js/new.js"></script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/allUser.css" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+</head>
+<body>
+    <div id = "total">
+        <div class = "aside">
+            <div class = "aside__info">
+                <div class = "aside__info__logo">
+                    <a href="library.html">BipaLibrary</a>
+                </div>
+                <div class = "aside__info__userInfo">
+                    <p> 님의 데이터입니다. </p>
+                    <h6>대출 권수 : 권</h6>
+                    <h6>예약 권수 : 권</h6>
+                    <h6>연체일 : 일</h6>
+                </div>
+            </div>
+            <div class = "aside__menu">
+                <h3>Menu</h3>
+                <hr>
+                <a href="library.html" style = "color:#919191;">창구 서비스</a>
+                <hr>
+                <a href="allUser.html" style = "color:blue;">전체 회원 조회</a>
+            </div>
+        </div>
+
+        <div class = "container">
+            <div class = "container__menu">
+                <p style="font-weight: bold;" >
+                    <button id = "allRental">전체 대출 현황</button>
+                    <!-- <a href="allUser.html" style="color: blue;">전체 대출 현황</a> -->
+                </p>
+
+                <p> | </p>
+
+                <p>
+                    <button id = "overDueMember">연체 회원 현황</button>
+                    <!-- <a href="allUser2.html">연체 회원 현황</a> -->
+                </p>
+
+                <p> | </p>
+
+                <p>
+                    <button id ="scheduled_return_button">금일 반납예정도서</button>
+                    <!-- <a href="allUser3.html">금일 반납예정도서</a> -->
+                </p>
+            </div>
+            <div class = "container__books">
+                <table class="content-table">
+                    <thead id = "container__books__tableName">
+                        <tr>
+
+                            <!-- <th>userId</th>
+                            <th>도서코드</th>
+                            <th>도서명</th>
+                            <th>저자</th>
+                            <th>반납일</th>
+                            <th>연체일</th>
+                            <th>분류</th>
+                            <th>상태</th> -->
+                        </tr>
+                    </thead>
+                    <tbody id = "container__books__tableContent">
+                        <tr>
+                            <!-- <td>유저1</td>
+                            <td class="book-id">1</td>
+                            <td><a href="">책1</a></td>
+                            <td>저자1</td>
+                            <td>2023-06-05</td>
+                            <td>3</td>
+                            <td>분류1</td>
+                            <td>대여중</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/alluser.js"></script>
+</body>
+</html>

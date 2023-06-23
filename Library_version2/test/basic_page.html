@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic2</title>
+    <script>
+        function test4(){
+            let numbers = 123456;
+            let sum = 0;
+            //numbers의 6자리를 뒤에서 부터 한자리씩 분리
+            //하여 출력하고 마지막에 합계를 콘솔에 출력하시오.
+
+            for(let i = 0; i < 0; i++){
+                let result = numbers % 10;
+                numbers = parseInt(numbers / 10);
+                sum += result;
+            }
+        }
+
+        function test5(){
+            let eles = document.getElementsByName
+        }
+        for(let i = 0; i < eles.length; i++){
+            if(eles[i].checked){
+                count++;
+            }
+        }
+        for(let ele of eles){
+            if(ele.checked){
+                console.log(ele.value);
+            }
+        }
+        if(count<2){
+            console.log('over 2 clicked');
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
