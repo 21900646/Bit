@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service</title>
+    <style>
+        table, td {
+            border : 1px solid black;
+            border-collapse: collapse;
+            position: relative;
+            margin: 10px 150px;
+        }
+
+        td {
+            width : 100px;
+            height: 40px;
+            text-align: center;
+        }
+        td.book_title {
+            width: 200px;
+        }
+        span {
+            margin-left: 150px;
+        }
+        div {
+            margin-bottom: 20px;
+        }
+
+        /* ---------------------- 도서 번호 입력 CSS ---------------------- */
+
+        #book_info {
+            margin-left: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            /* background-color: aqua; */
+
+            width: 722px;
+            height: 500px;
+        }
+
+        .book_num {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 330px;
+            height: 60px;
+
+            /* background-color: bisque; */
+        }
+
+        .book_num_title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .book_list_cart {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            box-sizing: border-box;
+
+            height: 100%;
+
+            overflow: scroll;
+
+        }
+
+        .book_list_title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        #book_list_head {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin: 0px 0px;
+
+            border: none;
+            border-bottom: none;
+            box-sizing: border-box;
+
+        }
+
+        #book_list_head td {
+            width: 180px;
+            box-sizing: border-box;
+        }
+
+        #book_list_table {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            border-top: none;
+
+            margin: 0px 0px;
+            box-sizing: border-box;
+
+        }
+
+        #book_list_table td {
+            width: 180px;
+            box-sizing: border-box;
+        }
+
+        .book_info_button_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 60px;
+        }
+
+        .rental_final_button {
+            width: 100px;
+            height: 35px;
+
+            font-size: 20px;
+
+            border-radius: 5px;
+
+            background-color: black;
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .rental_final_button:hover {
+            width: 100px;
+            height: 35px;
+
+            font-size: 20px;
+
+            border-radius: 5px;
+
+            font-weight: 600;
+
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+
+            cursor: pointer;
+        }
+        /* ---------------------- 도서 번호 입력 CSS ---------------------- */
+
+    </style>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+   <script>
+        $(document).ready(function(){
+			
+			
+            $('#list').on('click',function(){
+                console.log('work');
+                $.ajax({
+					url: "/Library/bookService?userId="+$("#userId").val(),
+					method: "GET",//type: "get"
+					data: "",
+					success: function(response) {
+						var data = JSON.parse(response);
+						
+						user_data = data.data.userInfo;
+						
+		                  $('#user_status').html(' <tr><td>대출도서</td><td>반납도서</td><td>미반납도서</td><td>반납예정도서</td><td>대출가능권수</td><td>이용상태</td><td>대출정지기간</td></tr>');
+		                  $('#total').html('<tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>');
+		                  $('#returned').html('<tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>');
+		                  $('#not_returned').html('<tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>');
+		                  $('#expecting_return').html('<tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>');
+		             
+		                  let user = user_data.user[0];
+		
+		                  let userStatus = `<tr><td>${user.totalUsingBook}</td><td>${user.returnedBook}</td><td>${user.notReturnedBook}</td>
+		                    <td>${user.expectingReturnBook}</td><td>${user.availableBook}</td><td>${user.userState}</td><td>${user.stopDate}</td></tr>`;
+		                  $('#user_status').html($('#user_status').html()+userStatus);  
+		                  
+		                  $("input[name='bookSeqs'").remove();
+							$("#book_list_table").html("");
+		                
+		                  let book_data = data.data.bookInfo;
+		                  
+		                  let expectingList = book_data.expectingReturn;
+		
+		                  let list = book_data.list;
+		                  let returnedList = book_data.returned;
+		                  let notReturnedList = book_data.notReturned;
+		                  
+		                  
+						
+		                  
+		                 
+		                  for(let book of list ){
+		                    let temp1 = `<tr><td>${book.bookSeq}</td><td>${book.bookTitle}</td><td>${book.bookAuthor}</td>
+		                        <td>${book.borrowStart}</td><td>${book.borrowEnd}</td><td>${book.returnDate}</td></tr>`;
+		                    $('#total').html($('#total').html()+temp1);  
+		                  }
+		
+		                  for(let book of returnedList ){
+		                    let temp1 = `<tr><td>${book.bookSeq}</td><td>${book.bookTitle}</td><td>${book.bookAuthor}</td>
+		                        <td>${book.borrowStart}</td><td>${book.borrowEnd}</td><td>${book.returnDate}</td></tr>`;
+		                    $('#returned').html($('#returned').html()+temp1);  
+		                  }
+		
+		                  for(let book of notReturnedList ){
+		                    let temp1 = `<tr><td>${book.bookSeq}</td><td>${book.bookTitle}</td><td>${book.bookAuthor}</td>
+		                        <td>${book.borrowStart}</td><td>${book.borrowEnd}</td><td>${book.returnDate}</td></tr>`;
+		                    $('#not_returned').html($('#not_returned').html()+temp1);  
+		                  }
+		
+		                  for(let book of expectingList ){
+		                    let temp1 = `<tr><td>${book.bookSeq}</td><td>${book.bookTitle}</td><td>${book.bookAuthor}</td>
+		                        <td>${book.borrowStart}</td><td>${book.borrowEnd}</td><td>${book.returnDate}</td></tr>`;
+		                    $('#expecting_return').html($('#expecting_return').html()+temp1);  
+		                  }
+		                  
+		                 
+					},
+					error: function(error) {
+						console.log(error);
+					},
+					complete: function() {
+						
+					}
+				})
+				/*$.get('user2.json',function(data){
+
+                 // let json = (JSON.stringify(data));
+                });*/
+            });  
+                console.log('end work');
+               
+
+            /* ---------------------- 도서 번호 ajax + onclick 이벤트 호출 ---------------------- */
+            bookSearchData.getInstance().bookSearchButtonOnclickEvent();
+            /* ---------------------- 도서 번호 ajax + onclick 이벤트 호출 ---------------------- */
+        });
+
+		function setRentalBook() {
+			if(!$("#userId").val()) {
+				alert("유저 아이디를 입력해주세요.");
+				$("#userId").focus();
+				return false;
+			}
+			
+			let seqVal = $("#rental_book_seq");
+			if(!seqVal.val()) {
+				alert("대출할 도서 번호를 입력해주세요.");
+				seqVal.focus();
+				return false;
+			}
+			
+			let flag = true;
+			let test = [];
+			$("input[name='bookSeqs']").each(function(index, obj) {
+				test.push($(obj).val());
+			});
+			
+			if(test.indexOf(seqVal.val()) > -1) {
+				alert("이미 추가된 도서입니다.");
+                $("#rental_book_seq").val("");
+                $("#rental_book_seq").focus();
+				return false;
+			}
+			
+			let inputTag = "<input type='hidden' name='bookSeqs' value='" + seqVal.val() + "'/>";
+			$("#fm_rental").append(inputTag);
+			//$("#setBook").text($("input[name='bookSeqs']").serializeArray().map(data => data.value));
+			//seqVal.val("");
+			//seqVal.focus();
+			return true;
+		}
+        //대출 추가
+        function rentalBook() {
+			if(!$("#userId").val()) {
+				alert("유저 아이디를 입력해주세요.");
+				$("#userId").focus();
+				return false;
+			}
+
+			if($("input[name='bookSeqs']").length < 1) {
+				alert("대출할 도서 번호를 입력해주세요.");
+				$("#rental_book_seq").focus();
+				return false;
+			}
+            let data = $("#fm_rental").serializeArray();
+            data.push({name: "gbn", value: "rental"});
+            $.ajax({
+				url: "/Library/bookService",
+				method: "post",
+				data: data,
+				success: function(data) {
+					alert(data);
+				},
+				error: function(error) {
+					alert("대출이 실패되었습니다.");
+				},
+				complete: function() {
+					$("input[name='bookSeqs'").remove();
+					$("#book_list_table").html("");
+					$('#list').click();
+				}
+			})
+        }
+        
+        /* ---------------------- 도서 번호 입력 js ---------------------- */
+
+        class bookSearchData {
+            static #instance = null;
+            static getInstance() {
+                if (this.#instance == null) {
+                    this.#instance = new bookSearchData();
+                }
+
+                return this.#instance;
+            }
+
+            bookData() {
+            let userAllContainer = null;
+                $.ajax({
+                    async: false,
+                    url: '/Library/bookService2?bookSeq='+$("#rental_book_seq").val(),
+                    type: 'get',
+                    success: function (data) {
+                        userAllContainer = JSON.parse(data);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+
+                return userAllContainer;
+            }
+
+            bookSearchButtonOnclickEvent() {
+                const bookSearchBtn = document.querySelector('.book_search_button');
+
+                bookSearchBtn.onclick = () => {
+
+                if(!setRentalBook()) {
+					return false;
+				}
+                const inputBookSearchVal = document.querySelector('#rental_book_seq').value;
+                const bookListTableBox = document.querySelector('#book_list_table');
+
+                const bookDataBox = bookSearchData.getInstance().bookData();
+                    
+                    bookListTableBox.innerHTML += `
+                        <tr>
+                            <td>${bookDataBox.bookSearchForRental.bookIsbn}</td>
+                            <td class="book_title">${bookDataBox.bookSearchForRental.bookTitle}</td>
+                            <td>${bookDataBox.bookSearchForRental.bookAuthor}</td>
+                        </tr>
+                    `;
+                    $("#rental_book_seq").val("");
+                    $("#rental_book_seq").focus();
+                }
+            }
+        }
+        /* ---------------------- 도서 번호 입력 js ---------------------- */
+        
+	function returnBook(){
+         
+          if(!$("#userId").val()) {
+            alert("유저 아이디를 입력해주세요.");
+            $("#userId").focus();
+            return false;
+         }
+
+         if($("input[name='bookSeqs']").length < 1) {
+            alert("반납할 도서 번호를 입력해주세요.");
+            $("#rental_book_seq").focus();
+            return false;
+         }
+         let data = $("#fm_rental").serializeArray();
+        data.push({name: "gbn", value: "return"});
+         $.ajax({
+            url: '/Library/bookService',
+            type:'post',
+             data: data,
+           success: function(data) {
+               alert(data);
+            },
+            error:function(error){
+                 alert("반납이 실패되었습니다.");
+            },
+            complete:function(){
+				$("input[name='bookSeqs'").remove();
+				$("#book_list_table").html("");
+				$('#list').click();
+            }
+         })
+      }
+   </script>
+<body>
+    <!--<span><button id="list">user1 도서현황보기</button></span>-->
+
+    <!-- 대출 추가 -->
+    <form id="fm_rental" method="post">
+        <!---------------------- 도서 번호 입력 HTML ---------------------->
+		<div>
+			<table id="user_info">
+		        <tr><th>회원 아이디</th><td><input type="text" id="userId" name="userId" placeholder="회원 아이디 입력"/></td><td><button type="button"  id="list">도서현황보기</button></td></tr>
+		    </table>
+		</div>
+		<!--<div>
+		    <table id="user_rental">
+		        <tr><th>도서 번호</th><td><input type="text" id="rental_book_seq" name="rental_book_seq" placeholder="도서 번호 입력"/></td><td><button type="button" onclick="setRentalBook()">추가</button></td></tr>
+		        <tr><th>도서명</th><td id="setBook"></td><td><button type="button" onclick="rentalBook()">대출확정</button></td></tr>
+		    </table>
+		</div>-->
+		<div id="book_info">
+            <div class="book_num">
+                <p class="book_num_title">도서 번호</p>
+                <input type="text" id="rental_book_seq" name="rental_book_seq" placeholder="도서 번호 입력" />
+                <button type="button" class="book_search_button">추가</button>
+            </div>
+            <div class="book_list_cart">
+                <p class="book_list_title">도서명</p>
+                <table id="book_list_head">
+                    <tr>
+                        <td>도서번호</td>
+                        <td class="book_title">도서명</td>
+                        <td>저자</td>
+                    </tr>
+                </table>
+                <table id="book_list_table">
+                    
+                </table>
+            </div>
+            <div class="book_info_button_area">
+                <button type="button" onclick="rentalBook()" class="rental_final_button">대출확정</button>
+              	<button type="button" onclick="returnBook()" class="rental_final_button">반납확정</button>
+            </div>
+        </div>
+        <!---------------------- 도서 번호 입력 HTML ---------------------->
+	</form>
+    <!-- //대출 추가 -->
+
+    <div id="container">
+    <div>
+        <table id="user_status">
+            <tr><td>대출도서</td><td>반납도서</td><td>미반납도서</td><td>반납예정도서</td><td>대출가능권수</td><td>이용상태</td><td>대출정지기간</td></tr>
+        </table>
+    </div>
+
+    <br>
+
+    <div>
+        <span>전체도서목록</span>
+        <table id="total">
+            <tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>
+        </table>
+    </div>
+
+    <div>
+        <span>전체반납목록</span>
+        <table id="returned">
+            <tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>
+        </table>
+    </div>
+    <div>
+        <span>미반납목록</span>
+        <table id="not_returned">
+            <tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>
+        </table>
+    </div>
+    <div>
+        <span>반납예정목록</span>
+        <table id="expecting_return">
+            <tr><td>도서번호</td><td class="book_title">도서명</td><td>저자</td><td>대출일자</td><td>반납기한</td><td>반납일자</td></tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
