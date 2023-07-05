@@ -45,7 +45,7 @@
 ## 자바 8에 추가된 새로운 개념
 ### 1. 자바 함수 <br><br>
 - 배경 : 메서드, 클래스 등 이급 시민을 일급 시민으로 바꾸어 프로그래밍을 수월하게 만들기 위해. <br>
-  > 1급 시민의 조건 3가지
+  > **1급 시민의 조건 3가지**
   > 1. 변수나 데이타에 할당 할 수 있어야 한다.
   > 2. 객체의 인자로 넘길 수 있어야 한다.
   > 3. 객체의 리턴값으로 리턴 할수 있어야 한다. 
@@ -59,17 +59,33 @@ Integer::compareTo
 ```
 <br>
 
-**2. 람다: 익명함수** <br><br>
+**2. 람다: 익명함수** <br>
 - ToDo : 함수를 값으로. <br>
 - 기존에는 조건문만 다른 코드를 복붙하여 수정이 어려웠지만, 지금은 코드를 인수로 넘겨줄 수 있게 됨.<br>
 *참고로, 메서드 참조한 값을 함수 파라미터로 줄 땐, 프리디케이트 사용* <br>
 ```
-static List<Apple> filterApples(List<Apple> a, Predicate<Apple> p) { ... }
+static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ... }
 
-filterApples(a, Apple::isGreenApple);                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+filterApples(inventory, Apple::isGreenApple);                                                                                                                                  
 ```
 
+**3. 메서드 전달에서 람다로** <br>
+- 배경 : 한두 번 사용할 매서드를 매번 정의하지 않기 위해. <br>
+```
+public static boolean isGreenApple(Apple apple){
+  return GREEN.equals(apple.getColor());
+}
+                         ↓   
+filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
 
+OR
+
+public static boolean isHeavyApple(Apple apple){
+  return apple.getWeight() > 150;
+}
+                         ↓   
+filerApple(inventory, (Apple a) -> a.getWeight() > 150);
+```
 
 ### 2. 스트림
 
