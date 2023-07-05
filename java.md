@@ -69,6 +69,8 @@ static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ...
 filterApples(inventory, Apple::isGreenApple);                                                                                                                                  
 ```
 
+<br>
+
 **3. 메서드 전달에서 람다로** <br>
 - 배경 : 한두 번 사용할 매서드를 매번 정의하지 않기 위해. <br>
 ```
@@ -78,15 +80,18 @@ public static boolean isGreenApple(Apple apple){
                          ↓   
 filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
 
-OR
-
+```
+```
 public static boolean isHeavyApple(Apple apple){
   return apple.getWeight() > 150;
 }
                          ↓   
 filerApple(inventory, (Apple a) -> a.getWeight() > 150);
 ```
-
+- filter method 사용.
+```
+filter(inventory, (Apple a) -> a.getWeight() > 150);
+```
 ### 2. 스트림
 
 
