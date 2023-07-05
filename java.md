@@ -92,9 +92,18 @@ filerApple(inventory, (Apple a) -> a.getWeight() > 150);
 ```
 filter(inventory, (Apple a) -> a.getWeight() > 150);
 ```
+<br><br><br>
 ### 2. 스트림
+**1. 스트림 API(java.util.stream)** <br>
+- 배경: 배열이나 컬렉션을 사용할 때 여기에 저장된 데이터에 접근하기 위해서 반복문 사용. → 가독성 저하. 코드 길이↑ <br><br>
+- 이를 통해, <br>
+  컬렉션을 처리하면서 발생하는 모호함과 반복적인 코드 문제, <br>
+  멀티코어 활용 어려움을 해결. <br><br>
 
-
+- 원본 데이터를 변경X. <br>
+- '내부 반복(internal iteration)'을 통해 라이브러리 내부에서 모든 데이터가 처리됨. <br>
+- 재사용이 가능한 컬렉션과는 달리 단 한 번만 사용할 수 있다.
+- parallelStream() 메서드를 통한 손쉬운 병렬 처리를 지원.
 
 ### 3. 디폴트 메서드와 자바 모듈
 
