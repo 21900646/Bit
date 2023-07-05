@@ -51,7 +51,7 @@
   > 3. 객체의 리턴값으로 리턴 할수 있어야 한다. 
 
 <br><br>
-**1. 메서드 참조** <br><br>
+**1. 메서드 참조** <br>
 - ToDo : 메서드를 값으로. <br>
 - 기존에는 직접 찾아들어가 찾았어야했지만, '클래스명::메서드명'을 사용하여 바로 참조 가능하게 됨.<br>
 ```
@@ -66,7 +66,7 @@ Integer::compareTo
 ```
 static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ... }
 
-filterApples(inventory, Apple::isGreenApple);                                                                                                                                  
+filterApples(inventory, Apple::isGreenApple);
 ```
 
 <br>
