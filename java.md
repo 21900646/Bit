@@ -51,17 +51,23 @@
   > 3. 객체의 리턴값으로 리턴 할수 있어야 한다. 
 
 <br><br>
-**1. 메서드 참조**
+**1. 메서드 참조** <br>
 - ToDo : 메서드를 값으로. <br>
 - 기존에는 직접 찾아들어가 찾았어야했지만, '클래스명::메서드명'을 사용하여 바로 참조 가능하게 됨.<br>
 ```
 Integer::compareTo
 ```
 <br>
-**2. 람다: 익명함수**
+
+**2. 람다: 익명함수** <br>
 - ToDo : 함수를 값으로. <br>
 - 기존에는 조건문만 다른 코드를 복붙하여 수정이 어려웠지만, 지금은 코드를 인수로 넘겨줄 수 있게 됨.<br>
 *참고로, 메서드 참조한 값을 함수 파라미터로 줄 땐, 프리디케이트 사용* <br>
+```
+static List<Apple> filterApples(List<Apple> a, Predicate<Apple> p) { ... }
+
+filterApples(a, Apple::isGreenApple);                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+```
 
 
 
