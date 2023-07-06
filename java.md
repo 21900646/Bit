@@ -46,7 +46,7 @@
 
 ---
 ## 자바 8에 추가된 새로운 개념
-### 1. 자바 함수 <br><br>
+### 1. 자바 함수 <br>
 - 배경 : 메서드, 클래스 등 이급 시민을 일급 시민으로 바꾸어 프로그래밍을 수월하게 만들기 위해. <br>
   > **1급 시민의 조건 3가지**
   > 1. 변수나 데이타에 할당 할 수 있어야 한다.
@@ -54,47 +54,45 @@
   > 3. 객체의 리턴값으로 리턴 할수 있어야 한다. 
 
 <br><br>
-**1. 메서드 참조** <br>
-- ToDo : 메서드를 값으로. <br>
-- 기존에는 직접 찾아들어가 찾았어야했지만, '클래스명::메서드명'을 사용하여 바로 참조 가능하게 됨.<br>
-```
-Integer::compareTo
-```
-<br>
-
-**2. 람다: 익명함수** <br>
-- ToDo : 함수를 값으로. <br>
-- 기존에는 조건문만 다른 코드를 복붙하여 수정이 어려웠지만, 지금은 코드를 인수로 넘겨줄 수 있게 됨.<br>
-*참고로, 메서드 참조한 값을 함수 파라미터로 줄 땐, 프리디케이트 사용* <br>
-```
-static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ... }
-
-filterApples(inventory, Apple::isGreenApple);
-```
-
-<br>
-
-**3. 메서드 전달에서 람다로** <br>
-- 배경 : 한두 번 사용할 매서드를 매번 정의하지 않기 위해. <br>
-```
-public static boolean isGreenApple(Apple apple){
-  return GREEN.equals(apple.getColor());
-}
-                         ↓   
-filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
-
-```
-```
-public static boolean isHeavyApple(Apple apple){
-  return apple.getWeight() > 150;
-}
-                         ↓   
-filerApple(inventory, (Apple a) -> a.getWeight() > 150);
-```
-- filter method 사용.
-```
-filter(inventory, (Apple a) -> a.getWeight() > 150);
-```
+	**1. 메서드 참조** <br>
+	- ToDo : 메서드를 값으로. <br>
+	- 기존에는 직접 찾아들어가 찾았어야했지만, '클래스명::메서드명'을 사용하여 바로 참조 가능하게 됨.<br>
+	```
+	Integer::compareTo
+	```
+	<br>
+	**2. 람다: 익명함수** <br>
+	- ToDo : 함수를 값으로. <br>
+	- 기존에는 조건문만 다른 코드를 복붙하여 수정이 어려웠지만, 지금은 코드를 인수로 넘겨줄 수 있게 됨.<br>
+	*참고로, 메서드 참조한 값을 함수 파라미터로 줄 땐, 프리디케이트 사용* <br>
+	```
+	static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ... }
+	
+	filterApples(inventory, Apple::isGreenApple);
+	```
+	
+	<br>
+	**3. 메서드 전달에서 람다로** <br>
+	- 배경 : 한두 번 사용할 매서드를 매번 정의하지 않기 위해. <br>
+	```
+	public static boolean isGreenApple(Apple apple){
+	  return GREEN.equals(apple.getColor());
+	}
+	                         ↓   
+	filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
+	
+	```
+	```
+	public static boolean isHeavyApple(Apple apple){
+	  return apple.getWeight() > 150;
+	}
+	                         ↓   
+	filerApple(inventory, (Apple a) -> a.getWeight() > 150);
+	```
+	- filter method 사용.
+	```
+	filter(inventory, (Apple a) -> a.getWeight() > 150);
+	```
 <br><br><br>
 ### 2. 스트림
 **1. 스트림 API(java.util.stream)** <br>
@@ -115,12 +113,12 @@ filter(inventory, (Apple a) -> a.getWeight() > 150);
 *포킹 단계 : 두 CPU를 가진 환경에서 리스트를 필터링할 때, 한 CPU는 리스트의 앞부분을 처리하고 다른CPU는 리스트의 뒷부분을 처리하도록 요청.* <br><br>
 **차이점** <br>
 컬렉션은 어떻게 데이터를 저장하고 접근할 지. <br>
-스트림은 데이터에 어떤 계산을 할 것인지. <br>
+스트림은 데이터에 어떤 계산을 할 것인지. <br><br>
 
 
 ### 3. 디폴트 메서드와 자바 모듈
-- 문제점 : 인터페이스에 추상메서드를 추가하게 되면 모든 구현체에 구현을 해야한다. <br>
-- 기존의 추상 메서드와 다른 점은, <br>
+- 문제점 : 인터페이스에 추상메서드를 추가하게 되면 모든 구현체에 구현을 해야함. <br>
+- 사용 방법은, <br>
 > 메서드 앞에 default 예약어를 붙인다. <br>
 > 구현부 {} 가 있어야 한다. <br>
 ```
@@ -130,7 +128,7 @@ public interface Interface {
     void abstractMethodB();
     void abstractMethodC();
 
-	// default 메서드
+    // default 메서드
     default int defaultMethodA(){
     	...
     }
