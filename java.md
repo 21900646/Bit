@@ -87,8 +87,10 @@ public static boolean isHeavyApple(Apple apple){
 			↓   
 filerApple(inventory, (Apple a) -> a.getWeight() > 150);
 ```
+
 <br>
-> - filter method 사용.
+
+> - filter method 사용. <br>
 ```
 filter(inventory, (Apple a) -> a.getWeight() > 150);
 ```
