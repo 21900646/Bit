@@ -119,5 +119,25 @@ filter(inventory, (Apple a) -> a.getWeight() > 150);
 
 
 ### 3. 디폴트 메서드와 자바 모듈
-gm
+- 문제점 : 인터페이스에 추상메서드를 추가하게 되면 모든 구현체에 구현을 해야한다. <br>
+- 기존의 추상 메서드와 다른 점은, <br>
+> 메서드 앞에 default 예약어를 붙인다. <br>
+> 구현부 {} 가 있어야 한다. <br>
+```
+public interface Interface {
+   // 추상 메서드 
+    void abstractMethodA();
+    void abstractMethodB();
+    void abstractMethodC();
 
+	// default 메서드
+    default int defaultMethodA(){
+    	...
+    }
+}
+```
+---
+### 정리
+#### 함수형 프로그래밍의 핵심적인 아이디어
+1. 메서드와 람다를 일급값으로 사용.
+2. 가변 공유 상태가 없는 병렬 실행을 이용해서 효율적이고 안전하게 함수나 메서드 호출 가능.
