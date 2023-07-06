@@ -57,6 +57,7 @@
 Integer::compareTo
 ```
 <br><br>
+
 **2) 람다: 익명함수** <br>
 > - ToDo : 함수를 값으로. <br>
 > - 기존에는 조건문만 다른 코드를 복붙하여 수정이 어려웠지만, 지금은 코드를 인수로 넘겨줄 수 있게 됨.<br>
@@ -67,28 +68,32 @@ static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) { ...
 filterApples(inventory, Apple::isGreenApple);
 ```
 <br><br>
+
 **3) 메서드 전달에서 람다로** <br>
 > - 배경 : 한두 번 사용할 매서드를 매번 정의하지 않기 위해. <br>
-	```
-	public static boolean isGreenApple(Apple apple){
-	  return GREEN.equals(apple.getColor());
-	}
-	                         ↓   
-	filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
-	
-	```
-	```
-	public static boolean isHeavyApple(Apple apple){
-	  return apple.getWeight() > 150;
-	}
-	                         ↓   
-	filerApple(inventory, (Apple a) -> a.getWeight() > 150);
-	```
-	- filter method 사용.
-	```
-	filter(inventory, (Apple a) -> a.getWeight() > 150);
-	```
+```
+public static boolean isGreenApple(Apple apple){
+	return GREEN.equals(apple.getColor());
+}
+			↓   
+filerApple(inventory, (Apple a) -> GREEN.equals(a.getColor()));
+```
+
+
+```
+public static boolean isHeavyApple(Apple apple){
+	return apple.getWeight() > 150;
+}
+			↓   
+filerApple(inventory, (Apple a) -> a.getWeight() > 150);
+```
+
+- filter method 사용.
+```
+filter(inventory, (Apple a) -> a.getWeight() > 150);
+```
 <br><br><br>
+
 ### 2. 스트림
 **1. 스트림 API(java.util.stream)** <br>
 - 배경: 배열이나 컬렉션을 사용할 때 여기에 저장된 데이터에 접근하기 위해서 반복문 사용. → 가독성 저하. 코드 길이↑ <br>
