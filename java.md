@@ -97,7 +97,7 @@ filter(inventory, (Apple a) -> a.getWeight() > 150);
 <br><br><br><br>
 
 ### 2. 스트림
-**1. 스트림 API(java.util.stream)** <br>
+**스트림 API(java.util.stream)** <br>
 - 배경: 배열이나 컬렉션을 사용할 때 여기에 저장된 데이터에 접근하기 위해서 반복문 사용. → 가독성 저하. 코드 길이↑ <br>
 - 이를 통해, <br>
   컬렉션을 처리하면서 발생하는 모호함과 반복적인 코드 문제, <br>
