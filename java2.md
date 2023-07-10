@@ -12,7 +12,7 @@
 ### 변화하는 요구사항에 대응하기
 1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가
 
-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)르르 어기는 것.
+2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.
 
 3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.
 
@@ -43,6 +43,7 @@
 1. Comparator로 정렬하기
    : 변화하는 요구사항에 대응할 수 있는 '다양한 정렬 동작'
 ```
+//java.util.Comparator
 public interface Comparator<T> {
   int compare(T o1, T o2);
 }
@@ -58,13 +59,62 @@ inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()))
 ``` 
    
 2. Runnable로 코드 블록 실행하기
+   : 스레드에게 어떤 코드를 실행할 것인지 알려주기.
 ```
+//java.lang.Runnable
+public interface Runnable{
+   void run();
+}
+
+Thread t = new Thread(new Runnable(){
+   public void run(){
+      System.out.println("Hello World");
+   }
+});
+```
+OR
+```
+Thread t = new Thread(() -> System.out.println("Hello World"));
 
 
 ```
    
-4. Callable을 결과로 변환하기
-5. GUI 이벤트 처리하기
+3. Callable을 결과로 변환하기
+   : Callable 인터페이스를 통해 결과를 반환하는 task를 만든다.
+```
+// java.util.concurrent.Callable
+public interface Callable<V>{
+   V call();
+}
+
+ExecutorService execcutorService = Executors.newCachedThreadPool();
+Future<String> threadName = executorService.submit(new Callable<String>(){
+   @Override
+   public String call() throws Exception{
+      return Thread.currentThread().getName();
+   }
+});
+```
+OR
+```
+Future<String> threadName = executorService.submit(() -> Thread.currentThread().getName());
+```
+
+4. GUI 이벤트 처리하기
+   : 유저의 클릭이나 이동 동의 이벤트의 변화에 대응할 수 있는 유연한 코드 필요.
+```
+Button button = new Button("Send");
+button.setOnAction(new EventHandler<ActionEvent>(){
+   public void handle(ActionEvent event){
+      label.setText("Sent!!");
+   }
+});
+```
+OR
+```
+button.setOnAction((ActionEvent event) -> label.setText("Sent!!"));
+```
+-> EventHandler가 setOnAction 메서드의 동작을 파라미터화한다.
 
 
 
