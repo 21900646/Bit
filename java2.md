@@ -42,7 +42,7 @@
 ### 실전 예제 (자바 API의 많은 메서드를 다양한 동작으로 파라미터화)
 1. Comparator로 정렬하기
    : 변화하는 요구사항에 대응할 수 있는 '다양한 정렬 동작'
-   ```
+```
 public interface Comparator<T> {
   int compare(T o1, T o2);
 }
@@ -54,7 +54,7 @@ inventory.sort(new Comparator<Apple>() {
 
 OR 
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
-   ``` 
+``` 
    
 3. Runnable로 코드 블록 실행하기
 4. Callable을 결과로 변환하기
