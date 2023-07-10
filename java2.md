@@ -51,8 +51,9 @@ inventory.sort(new Comparator<Apple>() {
   public int compare(Apple a1, Apple a2){
     return a1.getWeight().compareTo(a2.getWeight());
 });
-
+```
 OR 
+```
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ``` 
    
