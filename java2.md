@@ -118,6 +118,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 => 로직과 관련 없는 코드가 많이 추가. 
 
 <br>
+
 ---
 ##### 여기서부턴, 복잡한 과정 간소화
 
