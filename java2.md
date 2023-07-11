@@ -10,7 +10,8 @@
 
 
 ### 변화하는 요구사항에 대응하기
-1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가
+##### 1. 값 파라미터화
+1-1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가
 ```
 enum Color {RED, GREEN}
 
@@ -25,7 +26,7 @@ public static List<Apple> filterGreenApples(List<Apple> inventory){
 }
 ```
 
-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.
+1-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.
 ```
 public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
    List<Apple> result = new ArrayList<>();
@@ -48,7 +49,7 @@ public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight
 }
 ```
 
-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.
+1-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.
 ```
 public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag){
    List<Apple> result = new ArrayList<>();
@@ -63,7 +64,8 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 ```
 
 
-4. 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
+##### 2. 클래스
+: 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
 
 ** 전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)
 
@@ -108,28 +110,32 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
 
 이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공.
 
-5. 익명 클래스 사용
+##### 3. 익명 클래스
 : 이름이 없는 클래스. 클래스 선언과 인스턴스화를 동시에 할 수 있음. 즉석으로 필요한 구현 만들어서 사용 가능.
 
 ```
-public class AppleHeavyWeightPredica {
-   public boolean test(Apple apple) {
-      return apple.getWeight() > 150;
-   }
-}
-
-public class AppleGreenColorPredicate implements ApplePredicate {
+//1
+List<Apple> redApples = filterApples(inventory, new ApplePredicate(){
    public boolean test(Apple apple){
-      return GREEN.equals(apple.getColor());
+      return RED.equals(apple.getColor());        // 이것만 사용하는데, 다른 코드까지 많이 써야함.
    }
-}
+});
 
-public c
+//2
+button.setOnAction(new EventHandler<ActionEvent>(){
+   public void handle(ActionEvent event){
+      System.out.println("click");                 // 이것만 사용하는데, 다른 코드까지 많이 써야함.
+   }
+});
+
+```
 
 -> 하지만 이것조차 많은 공간 차지.
-
-6. 람다 표현식 사용
+##### 4. 람다
 -> 복잡성 문제 해결 !
+```
+List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
+```
 
 7. 리스트 형식으로 추상화
 
