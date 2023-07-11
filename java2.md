@@ -11,10 +11,56 @@
 
 ### 변화하는 요구사항에 대응하기
 1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가
+```
+enum Color {RED, GREEN}
+
+public static List<Apple> filterGreenApples(List<Apple> inventory){
+   List<Apple> result = new ArrayList<>();
+   for(Apple apple : inventory){
+      if(GREEN.equals(apple.getColor()) {
+         result.add(apple);
+      }
+   }
+   return result;
+}
+```
 
 2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.
+```
+public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
+   List<Apple> result = new ArrayList<>();
+   for(Apple apple : inventory){
+      if(apple.getColor().equals(color) {
+         result.add(apple);
+      }
+   }
+   return result;
+}
+
+public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight){
+   List<Apple> result = new ArrayList<>();
+   for(Apple apple : inventory){
+      if(apple.getWeight() > weight){
+         result.add(apple);
+      }
+   }
+   return result;
+}
+```
 
 3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.
+```
+public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag){
+   List<Apple> result = new ArrayList<>();
+   for(Apple apple : inventory){
+      if((flag && apple.getColor().equals(color)) ||
+         (!flag && apple.getWeight() > weight){
+         result.add(apple);
+      }
+   }
+   return result;
+}
+```
 
 ** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
 
