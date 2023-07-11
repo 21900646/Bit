@@ -152,7 +152,7 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 ```
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 ```
-<br><br><br>
+<br><br>
 ### 5. 리스트 형식으로 추상화
 : 바나나, 오렌지, 정수, 문자열 등의 리스트에 필터 메서드를 사용 O.
 ```
