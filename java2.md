@@ -104,13 +104,13 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
 
 public class AppleRedAndHeavyPredicate implements ApplePredicate {
    public boolean test(Apple apple){
-      return RED.equals(apple.getColor()) && apple.getWeight() > 150;
+      return RED.equals(apple.getColor()) && apple.getWeight() > 150;          // 이 부분을 구현하기 위해 다른 코드까지 많이 써야함. 
    }
 }
 
 List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
 ```
-: 하지만, 인터페이스를 구현하는 여러 클래스를 정의.  -> 인스턴스화
+하지만, 인터페이스를 구현하는 여러 클래스를 정의 -> 인스턴스화해야함. <br>
 메서드는 객체만 인수로 받기 때문에 test method를 ApplePredicate 객체로 싸서 전달해야함.
 
 => 로직과 관련 없는 코드가 많이 추가.
@@ -127,14 +127,14 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 //1
 List<Apple> redApples = filterApples(inventory, new ApplePredicate(){
    public boolean test(Apple apple){
-      return RED.equals(apple.getColor());        // 이것만 사용하는데, 다른 코드까지 많이 써야함.
+      return RED.equals(apple.getColor());        // 이 부분을 구현하기 위해 다른 코드까지 많이 써야함. 
    }
 });
 
 //2
 button.setOnAction(new EventHandler<ActionEvent>(){
    public void handle(ActionEvent event){
-      System.out.println("click");                 // 이것만 사용하는데, 다른 코드까지 많이 써야함.
+      System.out.println("click");                 // 이 부분을 구현하기 위해 다른 코드까지 많이 써야함. 
    }
 });
 
