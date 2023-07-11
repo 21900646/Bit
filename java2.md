@@ -64,7 +64,7 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 ```
 
 
-##### 2. 클래스
+##### 2. 클래스 (동작 파라미터화)
 : 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
 
 ** 전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)
@@ -110,7 +110,7 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
 
 이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공.
 
-##### 3. 익명 클래스
+##### 3. 익명 클래스 (동작 파라미터화)
 : 이름이 없는 클래스. 클래스 선언과 인스턴스화를 동시에 할 수 있음. 즉석으로 필요한 구현 만들어서 사용 가능.
 
 ```
@@ -131,7 +131,7 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 ```
 
 -> 하지만 이것조차 많은 공간 차지.
-##### 4. 람다
+##### 4. 람다 (동작 파라미터화)
 -> 복잡성 문제 해결 !
 ```
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
