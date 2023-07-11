@@ -104,7 +104,7 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
 
 public class AppleRedAndHeavyPredicate implements ApplePredicate {
    public boolean test(Apple apple){
-      return RED.equals(apple.getColor()) && apple.getWeight() > 150;       // 이 부분을 구현하기 위해 다른 코드까지 많이 써야함. 
+      return RED.equals(apple.getColor()) && apple.getWeight() > 150;      // 이 부분을 구현하기 위해 다른 코드까지 많이 써야함.
    }
 }
 
