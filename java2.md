@@ -62,7 +62,6 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 }
 ```
 
-** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
 
 4. 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
 
@@ -86,6 +85,7 @@ public class AppleGreenColorPredicate implements ApplePredicate {
    }
 }
 ```
+** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
 
 public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
    List<Apple> result = new ArrayList<>();
@@ -97,7 +97,9 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
    return result;
 }
 ```
-: 하지만, 인터페이스를 구현하는 여러 클래스를 정의 -> 인스턴스화
+: 하지만, 인터페이스를 구현하는 여러 클래스를 정의.  -> 인스턴스화
+메서드는 객체만 인수로 받기 때문에 test method를 ApplePredicate 객체로 싸서 전달해야함.
+
 => 로직과 관련 없는 코드가 많이 추가.
 
 ---
