@@ -27,6 +27,7 @@ public static List<Apple> filterGreenApples(List<Apple> inventory){
 }
 ```
 <br>
+
 **1-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.**
 ```
 public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
@@ -50,6 +51,7 @@ public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight
 }
 ```
 <br>
+
 **1-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.**
 ```
 public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag){
