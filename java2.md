@@ -29,7 +29,7 @@ public static List<Apple> filterGreenApples(List<Apple> inventory){
 <br>
 
 **1-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.**
-```
+```Java
 public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
    List<Apple> result = new ArrayList<>();
    for(Apple apple : inventory){
@@ -53,7 +53,7 @@ public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight
 <br>
 
 **1-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.**
-```
+```Java
 public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag){
    List<Apple> result = new ArrayList<>();
    for(Apple apple : inventory){
@@ -71,7 +71,7 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 **: 추상적 조건으로 필터링, 즉 인터페이스 파라미터화 -> 유연성 확보 !** <br><br>
 ***전략 디자인 패턴** : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)* <br>
 ***프레디케이트** : 참 또는 거짓을 반환하는 함수.* <br>
-```
+```Java
 // 알고리즘 패밀리
 public interface ApplePredicate{
    boolean test (Apple apple);
@@ -91,7 +91,7 @@ public class AppleGreenColorPredicate implements ApplePredicate {
 }
 ```
 
-```
+```Java
 public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
    List<Apple> result = new ArrayList<>();
    for(Apple apple : inventory){
@@ -129,7 +129,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 : 이름이 없는 클래스.
 : 즉석으로 필요한 구현 만들어서 사용 가능.
 
-```
+```Java
 //1
 List<Apple> redApples = filterApples(inventory, new ApplePredicate(){
    public boolean test(Apple apple){
@@ -149,13 +149,13 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 -> 하지만 이것조차 많은 공간 차지. <br><br><br>
 ### 4. 람다 (동작 파라미터화)
 -> 복잡성 문제 해결 !
-```
+```Java
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 ```
 <br><br>
 ### 5. 리스트 형식으로 추상화
 : 바나나, 오렌지, 정수, 문자열 등의 리스트에 필터 메서드를 사용 O.
-```
+```Java
 public interface Predicate<T> {
    boolean test(T t);
 }
@@ -178,7 +178,7 @@ List<Integer> evenNumbers = filter(numbers, (Integer i ) -> i%2 == 0;
 ### 실전 예제 (자바 API의 많은 메서드를 다양한 동작으로 파라미터화)
 #### 1. Comparator로 정렬하기
    : 변화하는 요구사항에 대응할 수 있는 '다양한 정렬 동작'
-```
+```Java
 //java.util.Comparator
 public interface Comparator<T> {
   int compare(T o1, T o2);
@@ -190,13 +190,13 @@ inventory.sort(new Comparator<Apple>() {
 });
 ```
 OR 
-```
+```Java
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ``` 
 <br><br>
 #### 2. Runnable로 코드 블록 실행하기
    : 스레드에게 어떤 코드를 실행할 것인지 알려주기.
-```
+```Java
 //java.lang.Runnable
 public interface Runnable{
    void run();
@@ -209,13 +209,13 @@ Thread t = new Thread(new Runnable(){
 });
 ```
 OR
-```
+```Java
 Thread t = new Thread(() -> System.out.println("Hello World"));
 ```
 <br><br>
 #### 3. Callable을 결과로 변환하기
    : Callable 인터페이스를 통해 결과를 반환하는 task를 만든다.
-```
+```Java
 // java.util.concurrent.Callable
 public interface Callable<V>{
    V call();
@@ -230,13 +230,13 @@ Future<String> threadName = executorService.submit(new Callable<String>(){
 });
 ```
 OR
-```
+```Java
 Future<String> threadName = executorService.submit(() -> Thread.currentThread().getName());
 ```
 <br><br>
 #### 4. GUI 이벤트 처리하기
    : 유저의 클릭이나 이동 동의 이벤트의 변화에 대응할 수 있는 유연한 코드 필요.
-```
+```Java
 Button button = new Button("Send");
 button.setOnAction(new EventHandler<ActionEvent>(){
    public void handle(ActionEvent event){
@@ -245,7 +245,7 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 });
 ```
 OR
-```
+```Java
 button.setOnAction((ActionEvent event) -> label.setText("Sent!!"));
 ```
 -> EventHandler가 setOnAction 메서드의 동작을 파라미터화한다.
