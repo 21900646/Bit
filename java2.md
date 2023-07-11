@@ -129,8 +129,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 <br><br>
 
 ### 3. 익명 클래스 (동작 파라미터화)
-: 이름이 없는 클래스.
-: 즉석으로 필요한 구현 만들어서 사용 가능.
+: 이름이 없는 클래스. 즉석으로 필요한 구현 만들어서 사용 가능.
 
 ```Java
 //1
