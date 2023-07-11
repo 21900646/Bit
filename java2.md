@@ -13,7 +13,7 @@
 ## 변화하는 요구사항에 대응하기
 ### 1. 값 파라미터화 
 **1-1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가**
-```
+```Java
 enum Color {RED, GREEN}
 
 public static List<Apple> filterGreenApples(List<Apple> inventory){
