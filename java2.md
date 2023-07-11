@@ -69,9 +69,8 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 
 ### 2. 클래스 (동작 파라미터화)
 **: 추상적 조건으로 필터링, 즉 인터페이스 파라미터화 -> 유연성 확보 !** <br><br>
-*전략 디자인 패턴* <br>
-: 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작) <br>
-** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
+*전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)* <br>
+*프레디케이트 : 참 또는 거짓을 반환하는 함수.* <br>
 ```
 // 알고리즘 패밀리
 public interface ApplePredicate{
