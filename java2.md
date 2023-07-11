@@ -146,14 +146,14 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 
 ```
 
--> 하지만 이것조차 많은 공간 차지. <br><br>
+-> 하지만 이것조차 많은 공간 차지. <br><br><br>
 ### 4. 람다 (동작 파라미터화)
 -> 복잡성 문제 해결 !
 ```
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 ```
-<br>
-##### 5. 리스트 형식으로 추상화
+<br><br><br>
+### 5. 리스트 형식으로 추상화
 : 바나나, 오렌지, 정수, 문자열 등의 리스트에 필터 메서드를 사용 O.
 ```
 public interface Predicate<T> {
