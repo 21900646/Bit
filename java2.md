@@ -122,7 +122,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 ---
 #### 여기서부턴, 복잡한 과정 간소화
 
-이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공.
+이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공. <br>
 
 ### 3. 익명 클래스 (동작 파라미터화)
 : 이름이 없는 클래스. 클래스 선언과 인스턴스화를 동시에 할 수 있음. 즉석으로 필요한 구현 만들어서 사용 가능.
@@ -144,13 +144,13 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 
 ```
 
--> 하지만 이것조차 많은 공간 차지.
+-> 하지만 이것조차 많은 공간 차지. <br>
 ##### 4. 람다 (동작 파라미터화)
 -> 복잡성 문제 해결 !
 ```
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 ```
-
+<br>
 ##### 5. 리스트 형식으로 추상화
 : 바나나, 오렌지, 정수, 문자열 등의 리스트에 필터 메서드를 사용 O.
 ```
