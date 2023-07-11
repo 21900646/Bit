@@ -12,7 +12,7 @@
 
 ### 변화하는 요구사항에 대응하기
 ##### 1. 값 파라미터화
-1-1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가
+**1-1. 녹색 사과 필터링 -> 문제점 : 다양한 색의 필터링 불가**
 ```
 enum Color {RED, GREEN}
 
@@ -27,7 +27,7 @@ public static List<Apple> filterGreenApples(List<Apple> inventory){
 }
 ```
 
-1-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.
+**1-2. 색을 파라미터화 -> 문제점 : 코드 중복. DRY(Don't repeat yourself)를 어기는 것.**
 ```
 public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
    List<Apple> result = new ArrayList<>();
@@ -50,7 +50,7 @@ public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight
 }
 ```
 
-1-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.
+**1-3. 모든 속성을 파라미터화 -> 문제점 : 유연하게 대응 불가.**
 ```
 public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag){
    List<Apple> result = new ArrayList<>();
