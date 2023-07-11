@@ -65,6 +65,38 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 ** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
 
 4. 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
+
+** 전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)
+```
+// 알고리즘 패밀리
+public interface ApplePredicate{
+   boolean test (Apple apple);
+}
+
+// 전략
+public class AppleHeavyWeightPredicate implements ApplePredicate {
+   public boolean test(Apple apple) {
+      return apple.getWeight() > 150;
+   }
+}
+
+public class AppleGreenColorPredicate implements ApplePredicate {
+   public boolean test(Apple apple){
+      return GREEN.equals(apple.getColor());
+   }
+}
+```
+
+public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
+   List<Apple> result = new ArrayList<>();
+   for(Apple apple : inventory){
+      if(p.test(apple)){
+         result.add(apple);
+      }
+   }
+   return result;
+}
+```
 : 하지만, 인터페이스를 구현하는 여러 클래스를 정의 -> 인스턴스화
 => 로직과 관련 없는 코드가 많이 추가.
 
