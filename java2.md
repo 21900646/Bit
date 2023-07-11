@@ -66,7 +66,7 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 4. 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
 
 ** 전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)
-```
+
 // 알고리즘 패밀리
 public interface ApplePredicate{
    boolean test (Apple apple);
@@ -87,6 +87,7 @@ public class AppleGreenColorPredicate implements ApplePredicate {
 ```
 ** *프레디케이트 : 참 또는 거짓을 반환하는 함수.
 
+```
 public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
    List<Apple> result = new ArrayList<>();
    for(Apple apple : inventory){
@@ -109,6 +110,21 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
 
 5. 익명 클래스 사용
 : 이름이 없는 클래스. 클래스 선언과 인스턴스화를 동시에 할 수 있음. 즉석으로 필요한 구현 만들어서 사용 가능.
+
+```
+public class AppleHeavyWeightPredica {
+   public boolean test(Apple apple) {
+      return apple.getWeight() > 150;
+   }
+}
+
+public class AppleGreenColorPredicate implements ApplePredicate {
+   public boolean test(Apple apple){
+      return GREEN.equals(apple.getColor());
+   }
+}
+
+public c
 
 -> 하지만 이것조차 많은 공간 차지.
 
