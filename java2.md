@@ -110,13 +110,14 @@ public class AppleRedAndHeavyPredicate implements ApplePredicate {
 
 List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
 ```
-하지만, 인터페이스를 구현하는 여러 클래스를 정의 -> 인스턴스화해야함. <br>
+하지만, 인터페이스를 구현하는 여러 클래스를 정의한 후에 인스턴스화를 해야함. <br>
 메서드는 객체만 인수로 받기 때문에 test method를 ApplePredicate 객체로 싸서 전달해야함.
 
 => 로직과 관련 없는 코드가 많이 추가.
 
+<br><br>
 ---
-###### 여기서부턴, 복잡한 과정 간소화
+##### 여기서부턴, 복잡한 과정 간소화
 
 이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공.
 
