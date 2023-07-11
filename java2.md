@@ -173,10 +173,10 @@ public static <T> List<T> filter(List<T> list, Predicate<T> p){
 List<Apple> redApples = filter(inventory, (Apple apple) -> RED.equals(apple.getColor());
 List<Integer> evenNumbers = filter(numbers, (Integer i ) -> i%2 == 0;
 ```
-
+<br><br>
 
 ### 실전 예제 (자바 API의 많은 메서드를 다양한 동작으로 파라미터화)
-1. Comparator로 정렬하기
+#### 1. Comparator로 정렬하기
    : 변화하는 요구사항에 대응할 수 있는 '다양한 정렬 동작'
 ```
 //java.util.Comparator
@@ -193,8 +193,8 @@ OR
 ```
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ``` 
-   
-2. Runnable로 코드 블록 실행하기
+<br><br>
+#### 2. Runnable로 코드 블록 실행하기
    : 스레드에게 어떤 코드를 실행할 것인지 알려주기.
 ```
 //java.lang.Runnable
@@ -211,11 +211,9 @@ Thread t = new Thread(new Runnable(){
 OR
 ```
 Thread t = new Thread(() -> System.out.println("Hello World"));
-
-
 ```
-   
-3. Callable을 결과로 변환하기
+<br><br>
+#### 3. Callable을 결과로 변환하기
    : Callable 인터페이스를 통해 결과를 반환하는 task를 만든다.
 ```
 // java.util.concurrent.Callable
@@ -235,8 +233,8 @@ OR
 ```
 Future<String> threadName = executorService.submit(() -> Thread.currentThread().getName());
 ```
-
-4. GUI 이벤트 처리하기
+<br><br>
+#### 4. GUI 이벤트 처리하기
    : 유저의 클릭이나 이동 동의 이벤트의 변화에 대응할 수 있는 유연한 코드 필요.
 ```
 Button button = new Button("Send");
