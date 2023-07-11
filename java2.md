@@ -250,7 +250,7 @@ button.setOnAction((ActionEvent event) -> label.setText("Sent!!"));
 ```
 -> EventHandler가 setOnAction 메서드의 동작을 파라미터화한다.
 
-
+<br><br>
 ---
 ### 정리
 - 동작 파라미터화에서는 메서드 내부적으로 다양한 동작을 수행할 수 있도록, 코드를 메서드 인수로 전달.
