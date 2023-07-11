@@ -137,8 +137,22 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 ```
 
-7. 리스트 형식으로 추상화
+##### 5. 리스트 형식으로 추상화
+```
+public interface Predicate<T> {
+   boolean test(T t);
+}
 
+public static <T> List<T> filter(List<T> list, Predicate<T> p){
+   List<T> result = new ArrayList<>();
+   for(T e: list){
+      if(p.test(e)){
+         result.add(e);
+      }
+   }
+   return result;
+}
+```
 
 
 ### 실전 예제 (자바 API의 많은 메서드를 다양한 동작으로 파라미터화)
