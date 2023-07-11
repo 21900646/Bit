@@ -139,6 +139,7 @@ List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.g
 ```
 
 ##### 5. 리스트 형식으로 추상화
+: 바나나, 오렌지, 정수, 문자열 등의 리스트에 필터 메서드를 사용 O.
 ```
 public interface Predicate<T> {
    boolean test(T t);
@@ -153,6 +154,9 @@ public static <T> List<T> filter(List<T> list, Predicate<T> p){
    }
    return result;
 }
+
+List<Apple> redApples = filter(inventory, (Apple apple) -> RED.equals(apple.getColor());
+List<Integer> evenNumbers = filter(numbers, (Integer i ) -> i%2 == 0;
 ```
 
 
