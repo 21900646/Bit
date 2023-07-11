@@ -71,7 +71,7 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 : 추상적 조건, 즉 인터페이스 파라미터화 -> 유연성 확보 !
 
 ** 전략 디자인 패턴 : 런타임에 알고리즘을 선택하는 기법. (조건에 따라  filter가 다르게 동작)
-
+```
 // 알고리즘 패밀리
 public interface ApplePredicate{
    boolean test (Apple apple);
