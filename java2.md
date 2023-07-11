@@ -147,7 +147,7 @@ button.setOnAction(new EventHandler<ActionEvent>(){
 ```
 
 -> 하지만 이것조차 많은 공간 차지. <br><br>
-##### 4. 람다 (동작 파라미터화)
+#### 4. 람다 (동작 파라미터화)
 -> 복잡성 문제 해결 !
 ```
 List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
