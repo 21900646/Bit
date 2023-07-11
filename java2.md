@@ -120,7 +120,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 <br>
 
 ---
-##### 여기서부턴, 복잡한 과정 간소화
+#### 여기서부턴, 복잡한 과정 간소화
 
 이를 해결하고자 클래스 선언과 동시에 인스턴스화를 할 수 있는 "익명 클래스"라는 기법 제공.
 
