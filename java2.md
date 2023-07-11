@@ -174,7 +174,7 @@ List<Apple> redApples = filter(inventory, (Apple apple) -> RED.equals(apple.getC
 List<Integer> evenNumbers = filter(numbers, (Integer i ) -> i%2 == 0;
 ```
 <br><br>
-
+---
 ### 실전 예제 (자바 API의 많은 메서드를 다양한 동작으로 파라미터화)
 #### 1. Comparator로 정렬하기
    : 변화하는 요구사항에 대응할 수 있는 '다양한 정렬 동작'
