@@ -113,7 +113,7 @@ List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPred
 <br>
 하지만, <br>
 인터페이스를 구현하는 여러 클래스를 정의 -> 인스턴스화해야함. <br>
-메서드는 객체만 인수로 받기 때문에 test method를 ApplePredicate 객체로 싸서 전달해야함.
+메서드는 객체만 인수로 받기 때문에 test method를 ApplePredicate 객체로 싸서 전달해야함. <br>
 
 => 로직과 관련 없는 코드가 많이 추가.
 
