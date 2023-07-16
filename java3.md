@@ -18,7 +18,39 @@ CHAPTER 3. 람다 표현식
   (parameters) -> { statements; }
 
   
-3. 어디에, 어떻게 람다를 사용하는가?
+2. 어디에, 어떻게 람다를 사용하는가?
+2-1. 함수형 인터페이스
+: '하나의 추상 메서드'를 지정하는 인터페이스. 상속X. 
+-> 전체 표현식을 함수형 인터페이스의 인스턴스로 취급.
+```
+Runnable r1 = () -> System.out.println("Hello World 1");     # 람다 사용
+
+Runnable r2 = () -> new Runnable(){                          # 익명 클래스 사용  
+  public void run() {
+    System.out.println("Hello World 2");
+  }
+};
+
+public static void process(Runnable r){
+  r.run();
+}
+
+process(r1);
+process(r2);
+process(() -> System.out.println("Hello World 3"));
+
+```
+
+2-2. 함수 디스크립터
+: 람다 표현식의 시그니처를 서술하는 메서드.
+= 어떤 입력값을 받고 어떤 반환값을 주는지에 대한 설명을 람다 표현식 문법으로 표현한 것.
+```
+() -> void
+(Apple, Apple) -> int
+```
+2-3. 
+
+  
 
 4. 실행 어라운드 패턴
 
