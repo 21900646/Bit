@@ -324,20 +324,21 @@ Predicate<Apple> redAndHeavyAppleOrGreen =
 
 3) Function 조합.
 -> Function 인터페이스는 Function 인스턴스를 반환하는 andThen, compose 두 가지 디폴트 메서드를 제공.
+```Java
+public class Letter{
+  public static String addHeader(String text){
+    return "From Raoul, Mario and Alan: " + text;
+  }
+  public static String addFooter(String text){
+    return text + " Kind regards";
+  }
+  public static String checkSpelling(String text){
+    return text.replaceAll("labda", "lamda");
+  }
+}
 
-
-9. 비슷한 수학적 개념.
-
-
-
-
-
-
-
-
-
-
-
-
-
+Function<String, String> addHeader = Letter::addHeader;
+Function<String, String> transformationPipeline = addHeader.andThen(Letter::checkSpelling)
+                                                            .andThen(Letter::addFooter);
+```
 
