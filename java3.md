@@ -28,14 +28,14 @@
 2-1. 함수형 인터페이스
 : '하나의 추상 메서드'를 갖는 인터페이스. 상속X. 디폴트 메서드 개수는 상관X. <br>
 확인된 예외를 던지는 동작을 허용X. <br>
-- 확인된 예외를 선언하는 함수형 인터페잇으를 직접 정의.
+- 확인된 예외를 선언하는 함수형 인터페이스를 직접 정의.
 - 람다를 try/catch 블록으로 감싼다.
   
 -> 전체 표현식을 함수형 인터페이스의 인스턴스로 취급.
-```
-Runnable r1 = () -> System.out.println("Hello World 1");     # 람다 사용
+```Java
+Runnable r1 = () -> System.out.println("Hello World 1");     // 람다 사용
 
-Runnable r2 = () -> new Runnable(){                          # 익명 클래스 사용  
+Runnable r2 = () -> new Runnable(){                          // 익명 클래스 사용  
   public void run() {
     System.out.println("Hello World 2");
   }
@@ -48,8 +48,8 @@ public static void process(Runnable r){
 process(r1);
 process(r2);
 process(() -> System.out.println("Hello World 3"));
-# 한 개의 void 메소드 호출은 중괄호 필요 X. 
-
+// 한 개의 void 메소드 호출은 중괄호 필요 X. 
+```
 ```
 
 2-2. 함수 디스크립터
