@@ -25,7 +25,7 @@
 
 ---  
 ## 2. 어디에, 어떻게 람다를 사용하는가?
-2-1. 함수형 인터페이스
+### 2-1. 함수형 인터페이스
 : '하나의 추상 메서드'를 갖는 인터페이스. 상속X. 디폴트 메서드 개수는 상관X. <br>
 확인된 예외를 던지는 동작을 허용X. <br>
 - 확인된 예외를 선언하는 함수형 인터페이스를 직접 정의.
@@ -52,7 +52,8 @@ process(() -> System.out.println("Hello World 3"));
 ```
 ```
 
-2-2. 함수 디스크립터
+
+### 2-2. 함수 디스크립터
 : 람다 표현식의 시그니처를 서술하는 메서드.
 = 어떤 입력값을 받고 어떤 반환값을 주는지에 대한 설명을 람다 표현식 문법으로 표현한 것.
 ```Java
@@ -68,6 +69,7 @@ public void execute(Runnable r){
 : 함수형 인터페이스임을 가르키는 어노테이션.
 만약 함수형 인터페이스가 아니라면 에러 발생.
 (Mutliple nonoverriding abstract methods found in interface Foo)
+
 ```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
@@ -83,12 +85,12 @@ public String procesesFile() throws IOException{
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.
 
 * 실행 어라운드 패턴을 적용하는 4과정
-1단계, 동작파라미터화 시키기.
+#### 1단계, 동작파라미터화 시키기.
 ```
 String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
 ```
 
-2단계, 함수형 인터페이스를 이용해서 동작 전달.
+#### 2단계, 함수형 인터페이스를 이용해서 동작 전달.
 ```
 @FunctionalInterface
 public interface BufferedReaderProcessor{
@@ -100,7 +102,7 @@ public String processFile(BufferedReaderProcessor p) throws IOException{
 }
 ```
 
-3단계, 동작 실행
+#### 3단계, 동작 실행
 ```Java
 public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
@@ -109,7 +111,7 @@ public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
 }
 ```
 
-4단계, 람다 전달
+#### 4단계, 람다 전달
 ```Java
 String oneLine = processFile((BufferedReader br) -> br.readLine());
 
@@ -121,7 +123,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 * 제네릭 함수형 인터페이스
 : 여기엔 참조형만 사용가능.
 
-1) Predicate
+#### 1) Predicate
 java.util.function.Predicate<T> 인터페이스
 : test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환.
 ```Java
@@ -143,7 +145,7 @@ Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
 
-2) Consumer
+#### 2) Consumer
 java.util.function.Consumer<T> 인터페이스
 : accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환.
 ```Java
@@ -162,7 +164,7 @@ forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
 ```
 
 
-3) Function
+#### 3) Function
 java.util.function.Function<T, R> 인터페이스
 : 제네릭 형식 T를 인수로 받아서 제네릭 형식 R 객체를 반환하는 추상 메서드 apply를 정의.
 ```Java
@@ -216,7 +218,7 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
   
 
 ## 5. 형식 검사, 형식 추론, 제약
-1) 형식 검사
+#### 1) 형식 검사
 : 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
 
 ```
@@ -227,14 +229,14 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 ```
 
 
-2) 같은 람다, 다른 함수형 인터페이스
+#### 2) 같은 람다, 다른 함수형 인터페이스
 ```
 
 ```
 
 
   
-5) 형식 추론
+#### 3) 형식 추론
 : 자바 컴파일러는 람다 표현식이 사용된 콘텍스트를 이용해서 람다 표현식과 관련된 함수형 인터페이스를 추론.
 -> 대상형식을 사용하여 함수 디스크립터를 알 수 있으므로, 람다의 시그니처도 추론 O.
 ```Java
@@ -243,7 +245,7 @@ Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());    
 ```
 
 
-6) 지역 변수 사용
+#### 4) 지역 변수 사용
 *람다 캡처링 : 람다 표현에서 자유 변수 활용*
 제약 사항: 시적으로 final  키워드가 붙거나 final처럼 변경없이 사용해야 함.
 ```Java
@@ -304,9 +306,9 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 4단계, 메서드 참조 사용
 
 
-8. 람다 표현식을 조합할 수 있는 유용한 메서드
+## 8. 람다 표현식을 조합할 수 있는 유용한 메서드
 
-1) Comparator 조합
+#### 1) Comparator 조합
 ```Java
 // 역정렬
 inventory.sort(comparing(Apple::getWeight).reversed());
@@ -316,7 +318,7 @@ inventory.sort(comparing(Apple::getWeight).reversed().thenComparing(Apple::getCo
 ```
 
 
-2) Predicate 조합.
+#### 2) Predicate 조합.
 -> Predicate 인터페이스는 복잡한 프리디케이트를 만들 수 있도록 **negate(결과 반전), and, or** 세가지 메서드 제공.
 ```Java
 Predicate<Apple> notRedApple = redApple.negate();
@@ -328,7 +330,7 @@ Predicate<Apple> redAndHeavyAppleOrGreen =
 ```
 
 
-3) Function 조합.
+#### 3) Function 조합.
 -> Function 인터페이스는 Function 인스턴스를 반환하는 andThen, compose 두 가지 디폴트 메서드를 제공.
 ```Java
 public class Letter{
@@ -347,4 +349,17 @@ Function<String, String> addHeader = Letter::addHeader;
 Function<String, String> transformationPipeline = addHeader.andThen(Letter::checkSpelling)
                                                             .andThen(Letter::addFooter);
 ```
+<br><br>
+---
+### 정리
+1. 람다 표현식 : 익명 함수의 일종. 간결한 코드 구현 가능.
+2. 함수형 인터페이스 : 하나의 추상 메서드만을 정의하는 인터페이스.
+3. 함수형 인터페이스의 추상 메서드를 즉석으로 제공 가능.
+4. 람다 표현식 전체가 함수형 인터페이스의 인스턴스로 취급.
+
+
+
+
+
+
 
