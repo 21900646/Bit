@@ -18,13 +18,13 @@
     (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());  
 
 <br>
-             [패턴] <br>
+  -----------[패턴]--------------- <br>
   (parameters) -> expression <br>
   (parameters) -> { statements; }
-
+<br>
 
 ---  
-2. 어디에, 어떻게 람다를 사용하는가?
+## 2. 어디에, 어떻게 람다를 사용하는가?
 2-1. 함수형 인터페이스
 : '하나의 추상 메서드'를 갖는 인터페이스. 상속X. 디폴트 메서드 개수는 상관X.
 확인된 예외를 던지는 동작을 허용X.
@@ -75,9 +75,10 @@ public String procesesFile() throws IOException{
   }
 }
 ```
-  
+<br>
+
 ---
-3. 실행 어라운드 패턴
+## 3. 실행 어라운드 패턴
 : 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로.
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.
 
@@ -116,7 +117,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 ```
 
 ---
-4. 함수형 인터페이스, 형식 추론
+## 4. 함수형 인터페이스, 형식 추론
 * 제네릭 함수형 인터페이스
 : 여기엔 참조형만 사용가능.
 
@@ -214,7 +215,7 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 
   
 
-5. 형식 검사, 형식 추론, 제약
+## 5. 형식 검사, 형식 추론, 제약
 1) 형식 검사
 : 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
 
@@ -258,7 +259,7 @@ Runnable r = () -> System.out.println(portNumber);
 
 
 
-6. 메서드 참조
+## 6. 메서드 참조
 : 특정 메서드만을 호출하는 람다의 축약형.
 ```Java
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
@@ -296,7 +297,7 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
 
 
-7. 람다, 메서드 참조 활용하기
+## 7. 람다, 메서드 참조 활용하기
 1단계, 코드 전달하기
 2단계, 익명 클래스 사용
 3단계, 람다 표현식 사용
