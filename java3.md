@@ -50,11 +50,9 @@ process(r2);
 process(() -> System.out.println("Hello World 3"));
 // 한 개의 void 메소드 호출은 중괄호 필요 X. 
 ```
-```
-
 
 ### 2-2. 함수 디스크립터
-: 람다 표현식의 시그니처를 서술하는 메서드.
+: 람다 표현식의 시그니처를 서술하는 메서드. <br>
 = 어떤 입력값을 받고 어떤 반환값을 주는지에 대한 설명을 람다 표현식 문법으로 표현한 것.
 ```Java
 execute(() -> {});
@@ -63,12 +61,11 @@ public void execute(Runnable r){
 }
 
 //() -> {} 의 시그니처는 "() -> void"
-
 ```
-*** functionallInterface란 무엇인가?
+** *functionallInterface란 무엇인가?
 : 함수형 인터페이스임을 가르키는 어노테이션.
 만약 함수형 인터페이스가 아니라면 에러 발생.
-(Mutliple nonoverriding abstract methods found in interface Foo)
+(Mutliple nonoverriding abstract methods found in interface Foo)*
 
 ```Java
 public String procesesFile() throws IOException{
@@ -81,14 +78,15 @@ public String procesesFile() throws IOException{
 
 ---
 ## 3. 실행 어라운드 패턴
-: 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로.
-즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.
+: 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로. <br>
+즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
 
-* 실행 어라운드 패턴을 적용하는 4과정
+* 실행 어라운드 패턴을 적용하는 4과정 <br>
 #### 1단계, 동작파라미터화 시키기.
 ```
 String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
 ```
+<br>
 
 #### 2단계, 함수형 인터페이스를 이용해서 동작 전달.
 ```
@@ -101,6 +99,7 @@ public String processFile(BufferedReaderProcessor p) throws IOException{
  ...
 }
 ```
+<br>
 
 #### 3단계, 동작 실행
 ```Java
@@ -110,6 +109,7 @@ public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
   }
 }
 ```
+<br>
 
 #### 4단계, 람다 전달
 ```Java
@@ -117,6 +117,7 @@ String oneLine = processFile((BufferedReader br) -> br.readLine());
 
 String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
 ```
+<br>
 
 ---
 ## 4. 함수형 인터페이스, 형식 추론
@@ -124,7 +125,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 : 여기엔 참조형만 사용가능.
 
 #### 1) Predicate
-java.util.function.Predicate<T> 인터페이스
+java.util.function.Predicate<T> 인터페이스<br>
 : test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환.
 ```Java
 @FunctionalInterface
@@ -146,7 +147,7 @@ List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
 
 #### 2) Consumer
-java.util.function.Consumer<T> 인터페이스
+java.util.function.Consumer<T> 인터페이스<br>
 : accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환.
 ```Java
 @FunctionallInterface
@@ -165,7 +166,7 @@ forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
 
 
 #### 3) Function
-java.util.function.Function<T, R> 인터페이스
+java.util.function.Function<T, R> 인터페이스<br>
 : 제네릭 형식 T를 인수로 받아서 제네릭 형식 R 객체를 반환하는 추상 메서드 apply를 정의.
 ```Java
 @FunctionalInterface
