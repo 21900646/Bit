@@ -22,6 +22,10 @@ CHAPTER 3. 람다 표현식
 2. 어디에, 어떻게 람다를 사용하는가?
 2-1. 함수형 인터페이스
 : '하나의 추상 메서드'를 갖는 인터페이스. 상속X. 디폴트 메서드 개수는 상관X.
+확인된 예외를 던지는 동작을 허용X.
+- 확인된 예외를 선언하는 함수형 인터페잇으를 직접 정의.
+- 람다를 try/catch 블록으로 감싼다.
+  
 -> 전체 표현식을 함수형 인터페이스의 인스턴스로 취급.
 ```
 Runnable r1 = () -> System.out.println("Hello World 1");     # 람다 사용
@@ -190,8 +194,56 @@ oddNumbers.test(1000); # 거짓(박싱)
 
 DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 
-6. 메서드 참조
+
+* 자바8에 추가된 함수형 인터페이스
+  [함수형 인터페이스]    [함수 디스크립터]
+    Predicate<T>           T -> boolean
+    Cunsumer<T>            T -> void
+    Function<T, R>         T -> R
+    Supplier<T>            () -> T
+    UnaryOperator<T>       T -> T
+    BinaryOperator<T>      (T, T) -> T
+    BiPredicate<L, R>      (T, U) -> boolean
+    BiConsumer<T, U>       (T, U) -> void
+    BiFunction<T, U, R>    (T, U) -> R
+
+  
+
+5. 형식 검사, 형식 추론, 제약
+1) 형식 검사
+: 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
+
+```
+1. filter 메서드의 선언 확인하기.
+2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다.
+3. Predicate<Apple>은 test라는 한 개의 추상 메서드를 정의하는 함수형 인터페이스이다.
+4. test 메서드는 Apple을 받아 boolean을 반환하는 함수 디스크립터를 묘사한다.
+```
+
+
+2) 같은 람다, 다른 함수형 인터페이스
+```
+
+```
+
+
+  
+5) 형식 추론
+: 자바 컴파일러는 람다 표현식이 사용된 콘텍스트를 이용해서 람다 표현식과 관련된 함수형 인터페이스를 추론.
+-> 대상형식을 사용하여 함수 디스크립터를 알 수 있으므로, 람다의 시그니처도 추론 O.
+```Java
+Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());   # 형식 추론 X.
+Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());    # 형식 추론.
+
+```
+
+
+7) 지역 변수 사용
 형식 검사, 형식 추론, 제약에서 컴파일러가 람다 표현식의 유효성을 확인하는 방법.
 
+
+
+
+6. 메서드 참조
 
 7. 람다 만들기
