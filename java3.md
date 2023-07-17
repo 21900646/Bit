@@ -15,7 +15,7 @@
        [람다 파라미터]  [화살표]            [람다 바디]
     (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());  
 
-  ---------- [[패턴]] ----------- <br>
+  ------------ [패턴] ------------- <br>
   (parameters) -> expression <br>
   (parameters) -> { statements; }
 
