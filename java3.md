@@ -267,13 +267,18 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 (String s) -> this.isValidNames(s)        this::inValidName
 
 * 만드는 법
+
   **1. 정적 메소드 참조**
      ex) Integer의 parseInt 메서드 => Integer::parseInt
+  
   **2. 다양한 형식의 인스턴스 메서드 참조**
      ex) String의 length 메서드 => String::length
+  
   **3. 기존 객체의 인스턴스 메서드 참조**
      ex) () -> expensiveTransaction.getValue() => expensiveTransaction::getValue
+  
     -> 비공개 헬퍼 메서드를 정의한 상황에서 유용.
+  
     ```Java
     private boolean isValidName(String string){
       return Character.isUpperCase(string.charAt(0));
@@ -281,6 +286,58 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
     filter(words, this::isValidName)
     ```
-    
+* 생성자 참조
 
-8. 람다 만들기
+
+
+
+7. 람다, 메서드 참조 활용하기
+1단계, 코드 전달하기
+2단계, 익명 클래스 사용
+3단계, 람다 표현식 사용
+4단계, 메서드 참조 사용
+
+
+8. 람다 표현식을 조합할 수 있는 유용한 메서드
+
+1) Comparator 조합
+```Java
+// 역정렬
+inventory.sort(comparing(Apple::getWeight).reversed());
+
+// 같은 무게 처리. -> 국가별 정렬로.
+inventory.sort(comparing(Apple::getWeight).reversed().thenComparing(Apple::getCountry));
+```
+
+
+2) Predicate 조합.
+-> Predicate 인터페이스는 복잡한 프리디케이트를 만들 수 있도록 **negate(결과 반전), and, or** 세가지 메서드 제공.
+```Java
+Predicate<Apple> notRedApple = redApple.negate();
+
+Predicate<Apple> redAndHeavyApple = redApple.and(apple.getweight() > 150);
+
+Predicate<Apple> redAndHeavyAppleOrGreen =
+  redApple.and(apple.getweight() > 150).or(apple -> GREEN.equals(a.getColor()));
+```
+
+
+3) Function 조합.
+-> Function 인터페이스는 Function 인스턴스를 반환하는 andThen, compose 두 가지 디폴트 메서드를 제공.
+
+
+9. 비슷한 수학적 개념.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
