@@ -17,7 +17,8 @@ CHAPTER 3. 람다 표현식
   (parameters) -> expression
   (parameters) -> { statements; }
 
-  
+
+---  
 2. 어디에, 어떻게 람다를 사용하는가?
 2-1. 함수형 인터페이스
 : '하나의 추상 메서드'를 갖는 인터페이스. 상속X. 디폴트 메서드 개수는 상관X.
@@ -66,11 +67,12 @@ public String procesesFile() throws IOException{
 }
 ```
   
-
+---
 3. 실행 어라운드 패턴
 : 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로.
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.
 
+* 실행 어라운드 패턴을 적용하는 4과정
 1단계, 동작파라미터화 시키기.
 ```
 String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
@@ -104,10 +106,57 @@ String oneLine = processFile((BufferedReader br) -> br.readLine());
 String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
 ```
 
-5. 함수형 인터페이스, 형식 추론
+---
+4. 함수형 인터페이스, 형식 추론
+4-1. Predicate
+java.util.function.Predicate<T> 인터페이스
+: test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환.
+```Java
+@FunctionalInterface
+public interface Predicate<T>{
+  boolean test(T t);
+}
+
+public <T> List<T> filter(List<T> list, Predicate<T> p){
+  List<T> results = new ArrayList<>();
+  for(T t: list){
+    if(p.test(t)){
+      results.add(t);
+    }
+  }
+  return results;
+}
+Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
+List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
+```
+
+4-2. Consumer
+java.util.function.Consumer<T> 인터페이스
+: accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환.
+```Java
+@FunctionallInterface
+public interface Consumer<T> {
+  void accept(T t);
+}
+
+public <T> void forEach(List<T> list, Consumer<T> c){
+  for(T t: list){
+    c.accpet(t);
+  }
+}
+
+forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
+```
+
+
+4-3. Function
+
+
+
 
 
 6. 메서드 참조
 형식 검사, 형식 추론, 제약에서 컴파일러가 람다 표현식의 유효성을 확인하는 방법.
+
 
 7. 람다 만들기
