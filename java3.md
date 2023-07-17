@@ -58,7 +58,7 @@ public void execute(Runnable r){
 : 함수형 인터페이스임을 가르키는 어노테이션.
 만약 함수형 인터페이스가 아니라면 에러 발생.
 (Mutliple nonoverriding abstract methods found in interface Foo)
-```
+```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
     return br.readLine();
@@ -71,10 +71,38 @@ public String procesesFile() throws IOException{
 : 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로.
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.
 
-1단계, 
-2단계,
-3단계,
-4단계,
+1단계, 동작파라미터화 시키기.
+```
+String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
+```
+
+2단계, 함수형 인터페이스를 이용해서 동작 전달.
+```
+@FunctionalInterface
+public interface BufferedReaderProcessor{
+  String process(BufferedReader b) throws IOException;
+}
+
+public String processFile(BufferedReaderProcessor p) throws IOException{
+ ...
+}
+```
+
+3단계, 동작 실행
+```Java
+public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
+  try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
+    return p.process(br);
+  }
+}
+```
+
+4단계, 람다 전달
+```Java
+String oneLine = processFile((BufferedReader br) -> br.readLine());
+
+String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
+```
 
 5. 함수형 인터페이스, 형식 추론
 
