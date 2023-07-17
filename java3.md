@@ -234,16 +234,53 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 ```Java
 Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());   # 형식 추론 X.
 Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());    # 형식 추론.
-
 ```
 
 
-7) 지역 변수 사용
+6) 지역 변수 사용
+*람다 캡처링 : 람다 표현에서 자유 변수 활용*
+제약 사항: 시적으로 final  키워드가 붙거나 final처럼 변경없이 사용해야 함.
+```Java
+int portNumber = 1337;
+Runnable r = () -> System.out.println(portNumber);
+// int portNumber = 31337; 이렇게 하면 오류가 난다. (두번 할당했기 때문) 
+```
+-> 제약 이유 : 인스턴슷 변수는 힙에, 지역 변수는 스택에 위치.
+원래 변수에 접근을 허용하는 것이 아니라, 자유 지역 변수의 복사본을 제공. => 한 번만 값을 할당해야 함.
+
 형식 검사, 형식 추론, 제약에서 컴파일러가 람다 표현식의 유효성을 확인하는 방법.
 
 
 
 
 6. 메서드 참조
+: 특정 메서드만을 호출하는 람다의 축약형.
+```Java
+inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
+inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
+```
+[람다]                                    [메서드 참조 단축 표현]
+(Apple apple) -> apple.getWeight()        Apple::getWeight
+() -> Thread.currentThread().dumpStack()  Thread.currentThread()::dumpStack
+(str, i) -> str.substring(i)              String::substring
+(String s) -> System.out.println(s)       System.out::println
+(String s) -> this.isValidNames(s)        this::inValidName
 
-7. 람다 만들기
+* 만드는 법
+  **1. 정적 메소드 참조**
+     ex) Integer의 parseInt 메서드 => Integer::parseInt
+  **2. 다양한 형식의 인스턴스 메서드 참조**
+     ex) String의 length 메서드 => String::length
+  **3. 기존 객체의 인스턴스 메서드 참조**
+     ex) () -> expensiveTransaction.getValue() => expensiveTransaction::getValue
+    -> 비공개 헬퍼 메서드를 정의한 상황에서 유용.
+    ```Java
+    private boolean isValidName(String string){
+      return Character.isUpperCase(string.charAt(0));
+    }
+
+    filter(words, this::isValidName)
+    ```
+    
+
+8. 람다 만들기
