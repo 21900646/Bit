@@ -188,6 +188,7 @@ Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
 oddNumbers.test(1000); # 거짓(박싱)
 ```
 
+DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 
 6. 메서드 참조
 형식 검사, 형식 추론, 제약에서 컴파일러가 람다 표현식의 유효성을 확인하는 방법.
