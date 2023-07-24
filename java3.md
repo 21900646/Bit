@@ -161,15 +161,17 @@ public interface IntPredicate{
   boolean test(int t);
 }
 
+
 IntPredicate evenNumbers = (int i) -> i % 2 == 0;
 evenNumbers.test(1000); # 참(박싱없음)
+
 
 Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
 oddNumbers.test(1000); # 거짓(박싱)
 ```
 <br>
 DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
-
+<br>
 ```
 * 자바8에 추가된 함수형 인터페이스
   [함수형 인터페이스]    [함수 디스크립터]
