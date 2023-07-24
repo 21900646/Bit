@@ -66,14 +66,7 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 ### 2-2. 함수 디스크립터
 : 람다 표현식의 시그니처를 서술하는 메서드. <br>
 = 어떤 입력값을 받고 어떤 반환값을 주는지에 대한 설명을 람다 표현식 문법으로 표현한 것.
-```Java
-execute(() -> {});
-public void execute(Runnable r){
-  r.run();
-}
 
-//() -> {} 의 시그니처는 "() -> void"
-```
 <br><br>
 ** *functionallInterface란 무엇인가?
 : 함수형 인터페이스임을 가르키는 어노테이션. <br><br>
@@ -82,61 +75,10 @@ public void execute(Runnable r){
 
 
 ---
-<br><br>
-## 3. 실행 어라운드 패턴
-: 실제 자원을 처리하는 코드를 **설정**과 **정리** 두 과정으로. <br>
-즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
-
-### 실행 어라운드 패턴을 적용하는 4과정 <br>
-#### 기존 소스
-```Java
-public String procesesFile() throws IOException{
-  try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
-    return br.readLine();
-  }
-}
-```
-
-#### 1단계, 동작파라미터화 시키기.
-```
-String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
-```
 <br>
 
-#### 2단계, 함수형 인터페이스를 이용해서 동작 전달.
-```
-@FunctionalInterface
-public interface BufferedReaderProcessor{
-  String process(BufferedReader b) throws IOException;
-}
-
-public String processFile(BufferedReaderProcessor p) throws IOException{
- ...
-}
-```
-<br>
-
-#### 3단계, 동작 실행
-```Java
-public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
-  try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
-    return p.process(br);
-  }
-}
-```
-<br>
-
-#### 4단계, 람다 전달
-```Java
-String oneLine = processFile((BufferedReader br) -> br.readLine());
-
-String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
-```
-<br>
-
----
-## 4. 함수형 인터페이스, 형식 추론
-* 제네릭 함수형 인터페이스
+### 활용
+* i. 제네릭 함수형 인터페이스
 : 여기엔 참조형만 사용가능.
 
 #### 1) Predicate
@@ -201,7 +143,7 @@ list<Integer> l = map(Arrays.asList("lambdas", "in", "actions"), (String s) -> s
 ```
 
 
-* 특화된 형식의 함수형 인터페이스
+* ii. 특화된 형식의 함수형 인터페이스
 *박싱 : 기본형을 참조형으로 변환하는 기능 (반대는 언박싱, 자동은 오토박싱)*
 오토박싱을 피할 수 있도록 하는 IntPredicate 인터페이스
 ```Java
@@ -232,6 +174,78 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
     BiFunction<T, U, R>    (T, U) -> R
 ```
   
+
+
+
+
+
+
+
+
+
+---
+<br><br>
+## 3. 실행 어라운드 패턴
+: 실제 자원을 처리하는 코드를 **설정**과 **정리** 두 과정으로. <br>
+즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
+
+
+
+
+
+
+
+
+
+### 실행 어라운드 패턴을 적용하는 4과정 <br>
+#### 기존 소스
+```Java
+public String procesesFile() throws IOException{
+  try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
+    return br.readLine();
+  }
+}
+```
+
+#### 1단계, 동작파라미터화 시키기.
+```
+String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
+```
+<br>
+
+#### 2단계, 함수형 인터페이스를 이용해서 동작 전달.
+```
+@FunctionalInterface
+public interface BufferedReaderProcessor{
+  String process(BufferedReader b) throws IOException;
+}
+
+public String processFile(BufferedReaderProcessor p) throws IOException{
+ ...
+}
+```
+<br>
+
+#### 3단계, 동작 실행
+```Java
+public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
+  try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
+    return p.process(br);
+  }
+}
+```
+<br>
+
+#### 4단계, 람다 전달
+```Java
+String oneLine = processFile((BufferedReader br) -> br.readLine());
+
+String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
+```
+<br>
+
+---
+
 
 ## 5. 형식 검사, 형식 추론, 제약
 : 컴파일러가 람다 표현식의 유효성을 확인하는 방법 <br>
