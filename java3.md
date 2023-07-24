@@ -231,6 +231,7 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
   
 
 ## 5. 형식 검사, 형식 추론, 제약
+: 컴파일러가 람다 표현식의 유효성을 확인하는 방법 <br>
 #### 1) 형식 검사
 : 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
 
