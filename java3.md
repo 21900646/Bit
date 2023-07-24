@@ -37,22 +37,25 @@
   
 -> 전체 표현식을 함수형 인터페이스의 인스턴스로 취급. <br>
 ```Java
-Runnable r1 = () -> System.out.println("Hello World 1");     // 람다 사용
+ // 1. 람다 사용
+Runnable r1 = () -> System.out.println("Hello World 1");
+process(r1);
 
-Runnable r2 = () -> new Runnable(){                          // 익명 클래스 사용  
+// 2. 익명 클래스 사용  
+Runnable r2 = () -> new Runnable(){                          
   public void run() {
     System.out.println("Hello World 2");
   }
 };
+process(r2);
 
+// 3. 직접 전달된 람다 표현식
+// 한 개의 void 메소드 호출은 중괄호 필요 X. 
 public static void process(Runnable r){
   r.run();
 }
 
-process(r1);
-process(r2);
 process(() -> System.out.println("Hello World 3"));
-// 한 개의 void 메소드 호출은 중괄호 필요 X. 
 ```
 
 ### 2-2. 함수 디스크립터
