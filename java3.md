@@ -42,6 +42,7 @@ Runnable r1 = () -> System.out.println("Hello World 1");
 process(r1);
 
 
+
 // 2. 익명 클래스 사용  
 Runnable r2 = () -> new Runnable(){                          
   public void run() {
@@ -51,8 +52,8 @@ Runnable r2 = () -> new Runnable(){
 process(r2);
 
 
-// 3. 직접 전달된 람다 표현식
-// 한 개의 void 메소드 호출은 중괄호 필요 X. 
+
+// 3. 직접 전달된 람다 표현식 - 한 개의 void 메소드 호출은 중괄호 필요 X. 
 public static void process(Runnable r){
   r.run();
 }
