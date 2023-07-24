@@ -76,7 +76,7 @@ public void execute(Runnable r){
 ```
 <br><br>
 ** *functionallInterface란 무엇인가?
-: 함수형 인터페이스임을 가르키는 어노테이션. <br>
+: 함수형 인터페이스임을 가르키는 어노테이션. <br><br>
 만약 함수형 인터페이스가 아니라면 에러 발생. <br>
 (Mutliple nonoverriding abstract methods found in interface Foo)*
 
