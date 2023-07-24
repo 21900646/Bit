@@ -163,11 +163,12 @@ public interface IntPredicate{
 
 
 IntPredicate evenNumbers = (int i) -> i % 2 == 0;
-evenNumbers.test(1000); # 참(박싱없음)
+evenNumbers.test(1000);                               // 참(박싱없음)
 
 
+// 원래 버전
 Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
-oddNumbers.test(1000); # 거짓(박싱)
+oddNumbers.test(1000);                                // 거짓(박싱)
 ```
 <br>
 DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
