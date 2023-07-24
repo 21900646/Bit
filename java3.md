@@ -61,6 +61,7 @@ public static void process(Runnable r){
 
 process(() -> System.out.println("Hello World 3"));
 ```
+<br><br>
 
 ### 2-2. 함수 디스크립터
 : 람다 표현식의 시그니처를 서술하는 메서드. <br>
