@@ -327,7 +327,14 @@ inventory.sort(new Comparator<Apple>(){
 });
 ```
 3단계, 람다 표현식 사용
+```java
+inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
+```
+
 4단계, 메서드 참조 사용
+```java
+inventory.sort(comparing(Apple::getWeight));
+```
 
 
 ## 8. 람다 표현식을 조합할 수 있는 유용한 메서드
