@@ -83,12 +83,14 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 <br><br>
 #### 1) Predicate
 java.util.function.Predicate<T> 인터페이스<br>
-: test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환.
+: test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환. <br>
+
 ```Java
 @FunctionalInterface
 public interface Predicate<T>{
   boolean test(T t);
 }
+
 
 public <T> List<T> filter(List<T> list, Predicate<T> p){
   List<T> results = new ArrayList<>();
@@ -100,10 +102,11 @@ public <T> List<T> filter(List<T> list, Predicate<T> p){
   return results;
 }
 
+
 Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
-<br>
+<br><br>
 
 #### 2) Consumer
 java.util.function.Consumer<T> 인터페이스<br>
