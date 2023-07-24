@@ -80,6 +80,14 @@ public void execute(Runnable r){
 만약 함수형 인터페이스가 아니라면 에러 발생. <br>
 (Mutliple nonoverriding abstract methods found in interface Foo)*
 
+<br>
+
+---
+<br><br>
+## 3. 실행 어라운드 패턴
+: 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로. <br>
+즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
+
 ```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
@@ -87,12 +95,6 @@ public String procesesFile() throws IOException{
   }
 }
 ```
-<br>
-
----
-## 3. 실행 어라운드 패턴
-: 실제 자원을 처리하는 코드를 설정과 정리 두 과정으로. <br>
-즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
 
 ### 실행 어라운드 패턴을 적용하는 4과정 <br>
 #### 1단계, 동작파라미터화 시키기.
