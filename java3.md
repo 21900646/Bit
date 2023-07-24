@@ -154,7 +154,7 @@ list<Integer> l = map(Arrays.asList("lambdas", "in", "actions"), (String s) -> s
 <br><br><br>
 
 ### ii. 특화된 형식의 함수형 인터페이스
-*박싱 : 기본형을 참조형으로 변환하는 기능 (반대는 언박싱, 자동은 오토박싱)*
+*박싱 : 기본형을 참조형으로 변환하는 기능 (반대는 언박싱, 자동은 오토박싱)* <br>
 오토박싱을 피할 수 있도록 하는 IntPredicate 인터페이스
 ```Java
 public interface IntPredicate{
