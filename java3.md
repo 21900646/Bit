@@ -266,7 +266,7 @@ filter(inventory, **(Apple apple) -> apple.getWeight() > 150**);
 <br>
 
 > 2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다. <br>
-filter(List<Apple>inventory, **Predicate<Apple>** p); 
+filter(List<Apple>inventory, **Predicate <Apple>** p); 
 <br>
 
 > 3. Predicate<Apple>은 test라는 한 개의 추상 메서드를 정의하는 함수형 인터페이스이다. <br>
