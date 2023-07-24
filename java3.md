@@ -99,6 +99,7 @@ public <T> List<T> filter(List<T> list, Predicate<T> p){
   }
   return results;
 }
+
 Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
