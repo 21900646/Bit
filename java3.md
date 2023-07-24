@@ -77,7 +77,7 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 ---
 
 
-### 활용
+### 자바 API의 다양한 함수형 인터페이스
 ### i. 제네릭 함수형 인터페이스
 : 여기엔 참조형만 사용가능. (제네릭의 내부 구현으로 인해)
 <br><br>
@@ -159,7 +159,7 @@ list<Integer> l = map(Arrays.asList("lambdas", "in", "actions"), (String s) -> s
 ```Java
 // 원래 버전
 Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
-oddNumbers.test(1000);                                                         // 거짓(박싱)
+oddNumbers.test(1000);                                                         // 박싱
 
 
 // IntPredicate 인터페이스
@@ -168,7 +168,7 @@ public interface IntPredicate{
 }
 
 IntPredicate evenNumbers = (int i) -> i % 2 == 0;
-evenNumbers.test(1000);                                                         // 참(박싱없음)
+evenNumbers.test(1000);                                                         // 박싱 X
 ``` 
 <br>
 DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
@@ -189,23 +189,11 @@ DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
   
 
 
-
-
-
-
-
-
-
 ---
 <br><br>
 ## 3. 실행 어라운드 패턴
 : 실제 자원을 처리하는 코드를 **설정**과 **정리** 두 과정으로. <br>
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
-
-
-
-
-
 
 
 
