@@ -20,7 +20,7 @@
 <br>
 
 #### * 패턴 <br>
-  (parameters) -> expression <br>
+  (parameters) -> expression          // 한 개의 void 메소드 호출은 중괄호로 감쌀 필요 X. <br> 
   (parameters) -> { statements; }
 <br><br>
 
