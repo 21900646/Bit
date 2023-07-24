@@ -110,12 +110,13 @@ List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 
 #### 2) Consumer
 java.util.function.Consumer<T> 인터페이스<br>
-: accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환.
+: accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환. <br>
 ```Java
 @FunctionallInterface
 public interface Consumer<T> {
   void accept(T t);
 }
+
 
 public <T> void forEach(List<T> list, Consumer<T> c){
   for(T t: list){
@@ -123,18 +124,20 @@ public <T> void forEach(List<T> list, Consumer<T> c){
   }
 }
 
+
 forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
 ```
-<br>
+<br><br>
 
 #### 3) Function
 java.util.function.Function<T, R> 인터페이스<br>
-: 제네릭 형식 T를 인수로 받아서 제네릭 형식 R 객체를 반환하는 추상 메서드 apply를 정의.
+: 제네릭 형식 T를 인수로 받아서 제네릭 형식 R 객체를 반환하는 추상 메서드 apply를 정의. <br>
 ```Java
 @FunctionalInterface
 public interface Function<T, R>{
   R apply(T t);
 }
+
 
 public <T, R> List<R> filter(List<T> list, Predicate<T, R> f){
   List<R> results = new ArrayList<>();
@@ -144,9 +147,11 @@ public <T, R> List<R> filter(List<T> list, Predicate<T, R> f){
   return result;
 }
 
+
 list<Integer> l = map(Arrays.asList("lambdas", "in", "actions"), (String s) -> s.length());
 ```
 
+<br>
 
 ### ii. 특화된 형식의 함수형 인터페이스
 *박싱 : 기본형을 참조형으로 변환하는 기능 (반대는 언박싱, 자동은 오토박싱)*
