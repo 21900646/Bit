@@ -333,6 +333,7 @@ inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
 ```
 
 4단계, 메서드 참조 사용
+
 ```java
 inventory.sort(comparing(Apple::getWeight));
 ```
