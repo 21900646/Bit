@@ -283,8 +283,11 @@ boolean test(Apple apple)
 Apple -> boolean
 ```
 
-5. filter 메서드로 전달된 인수는 이와 같은 요구사항을 만족해야 한다.
-함수 디스크립터는 Apple -> boolean이므로 람다의 시그니처와 일치.
+5. filter 메서드로 전달된 인수는 이와 같은 요구사항을 만족해야 한다. <br>
+함수 디스크립터는 Apple -> boolean이므로 람다의 시그니처와 일치.<br>
+```java
+filter(inventory, (Apple apple) -> apple.getWeight() > 150);
+```
 
 
 #### 2) 같은 람다, 다른 함수형 인터페이스
