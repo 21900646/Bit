@@ -54,12 +54,12 @@ process(r2);
 
 
 
-// 3. 함수형 인터페이스 (직접 전달된 람다 표현식)
+// 3. 함수형 인터페이스
 public static void process(Runnable r){
   r.run();
 }
 
-process(() -> System.out.println("Hello World 3"));
+process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 표현식
 ```
 <br><br>
 
