@@ -303,9 +303,12 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
     filter(words, this::isValidName)
     ```
+    
 * 생성자 참조
-
-
+인수가 없는 생성자
+--------
+여기!!!!!!!
+--------
 
 
 ## 7. 람다, 메서드 참조 활용하기
