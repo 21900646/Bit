@@ -49,11 +49,12 @@ Runnable r2 = () -> new Runnable(){
     System.out.println("Hello World 2");
   }
 };
+
 process(r2);
 
 
 
-// 3. 직접 전달된 람다 표현식 - 한 개의 void 메소드 호출은 중괄호 필요 X. 
+// 3. 직접 전달된 람다 표현식
 public static void process(Runnable r){
   r.run();
 }
