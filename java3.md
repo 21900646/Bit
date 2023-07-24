@@ -74,7 +74,6 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 (Mutliple nonoverriding abstract methods found in interface Foo)*
 
 
----
 <br>
 
 ### 활용
