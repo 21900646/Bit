@@ -294,7 +294,7 @@ filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 ```
 
 ```
-
+<br>
 
   
 ### 3) 형식 추론
@@ -304,7 +304,7 @@ filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());   # 형식 추론 X.
 Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());    # 형식 추론.
 ```
-
+<br>
 
 ### 4) 지역 변수 사용
 *람다 캡처링 : 람다 표현에서 자유 변수 활용*
@@ -319,10 +319,10 @@ Runnable r = () -> System.out.println(portNumber);
 
 형식 검사, 형식 추론, 제약에서 컴파일러가 람다 표현식의 유효성을 확인하는 방법.
 
+<br>
 
 
-
-## 6. 메서드 참조
+## 5. 메서드 참조
 : 특정 메서드만을 호출하는 람다의 축약형.
 ```Java
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
