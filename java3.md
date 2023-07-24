@@ -74,7 +74,7 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 (Mutliple nonoverriding abstract methods found in interface Foo)*
 
 
-<br>
+<br><br>
 
 ### 활용
 * i. 제네릭 함수형 인터페이스
