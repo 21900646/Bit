@@ -88,7 +88,7 @@ public void execute(Runnable r){
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. 그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
 
 ### 실행 어라운드 패턴을 적용하는 4과정 <br>
-#### 0단계, 기존 소스
+#### 기존 소스
 ```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
