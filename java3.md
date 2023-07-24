@@ -194,7 +194,7 @@ evenNumbers.test(1000);                                                         
 ## 3. 실행 어라운드 패턴
 : 실제 자원을 처리하는 코드를 **설정**과 **정리** 두 과정으로. <br>
 즉, 하나의 로직을 수행할때 첫번째로 초기화/준비 코드가 수행되고 마지막에 정리/마무리 코드가 실행된다. <br>
-그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br>
+그리고 그 사이에 실제 자원을 처리하는 코드를 실행하는 것이다.<br><br>
 
 
 
@@ -204,7 +204,7 @@ evenNumbers.test(1000);                                                         
 ```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
-    return br.readLine();
+    return br.readLine();              // 실제 필요한 작업을 하는 행
   }
 }
 ```
