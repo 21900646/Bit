@@ -251,11 +251,20 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 
 ## 4. 형식 검사, 형식 추론, 제약
 : 컴파일러가 람다 표현식의 유효성을 확인하는 방법 <br><br>
+
 #### 1) 형식 검사
 : 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
 
+```java
+List<Apple> heavierThan150g = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
+```
+<br>
 > 1. filter 메서드의 선언 확인하기.
+filter(inventory, **(Apple apple) -> apple.getWeight() > 150**); 
+<br>
 > 2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다.
+filter(List<Apple>inventory, **Predicate<Apple> **p); 
+  
 > 3. Predicate<Apple>은 test라는 한 개의 추상 메서드를 정의하는 함수형 인터페이스이다.
 > 4. test 메서드는 Apple을 받아 boolean을 반환하는 함수 디스크립터를 묘사한다.
 
