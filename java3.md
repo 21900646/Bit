@@ -173,7 +173,6 @@ evenNumbers.test(1000);                                                         
 <br>
 
 #### 2) DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
-<br>
 
 ```
 * 자바8에 추가된 함수형 인터페이스
