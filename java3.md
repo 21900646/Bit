@@ -269,6 +269,7 @@ inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()))
 inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 ```
 
+```
 [람다]                                    [메서드 참조 단축 표현]
 
 (Apple apple) -> apple.getWeight()        Apple::getWeight
@@ -280,7 +281,7 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 (String s) -> System.out.println(s)       System.out::println
 
 (String s) -> this.isValidNames(s)        this::inValidName
-
+```
 
 * 만드는 법
 
