@@ -80,7 +80,7 @@ process(() -> System.out.println("Hello World 3")); //직접 전달된 람다 �
 #### i. 제네릭 함수형 인터페이스
 : 여기엔 참조형만 사용가능.
 
-##### 1) Predicate
+#### 1) Predicate
 java.util.function.Predicate<T> 인터페이스<br>
 : test라는 추상메서드를 정의, test는 제네릭 형식 T 객체를 인수로 받음. -> 불리언을 반환.
 ```Java
@@ -102,7 +102,7 @@ Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
 
-##### 2) Consumer
+#### 2) Consumer
 java.util.function.Consumer<T> 인터페이스<br>
 : accept라는 추상 메서드 -> 제네릭 형식 T객체를 받아서 void를 반환.
 ```Java
@@ -121,7 +121,7 @@ forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
 ```
 
 
-##### 3) Function
+#### 3) Function
 java.util.function.Function<T, R> 인터페이스<br>
 : 제네릭 형식 T를 인수로 받아서 제네릭 형식 R 객체를 반환하는 추상 메서드 apply를 정의.
 ```Java
