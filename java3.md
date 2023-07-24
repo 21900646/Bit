@@ -171,7 +171,8 @@ IntPredicate evenNumbers = (int i) -> i % 2 == 0;
 evenNumbers.test(1000);                                                         // 박싱 X
 ``` 
 <br>
-DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
+
+#### 2) DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 <br>
 
 ```
