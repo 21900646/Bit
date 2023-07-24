@@ -74,6 +74,7 @@ public void execute(Runnable r){
 
 //() -> {} 의 시그니처는 "() -> void"
 ```
+<br><br>
 ** *functionallInterface란 무엇인가?
 : 함수형 인터페이스임을 가르키는 어노테이션. <br>
 만약 함수형 인터페이스가 아니라면 에러 발생. <br>
