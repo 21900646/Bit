@@ -309,7 +309,23 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
 ## 7. 람다, 메서드 참조 활용하기
 1단계, 코드 전달하기
+```java
+public class AppleComparator implements Comparator<Apple>{
+  public int compare(Apple a1, Apple a2){
+    return a1.getWeight().compareTo(a2.getWeight());
+  }
+}
+inventory.sort(new AppleComparator());
+```
+
 2단계, 익명 클래스 사용
+```java
+inventory.sort(new Comparator<Apple>(){
+  public int compare(Apple a1, Apple a2){
+    return a1.getWeight().compareTo(a2.getWeight());
+  }
+});
+```
 3단계, 람다 표현식 사용
 4단계, 메서드 참조 사용
 
