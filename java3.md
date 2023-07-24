@@ -263,13 +263,13 @@ List<Apple> heavierThan150g = filter(inventory, (Apple apple) -> apple.getWeight
 
 1. filter 메서드의 선언 확인하기. <br>
 ```java
-filter(inventory, **(Apple apple) -> apple.getWeight() > 150**);
+filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 ```
 <br>
 
 2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다. <br>
 ```java
-filter(List<Apple>inventory, **Predicate <Apple>** p);
+filter(List<Apple>inventory, Predicate<Apple> p);
 ```
 <br>
 
