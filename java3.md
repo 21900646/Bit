@@ -102,6 +102,7 @@ public <T> List<T> filter(List<T> list, Predicate<T> p){
 Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 ```
+<br>
 
 #### 2) Consumer
 java.util.function.Consumer<T> 인터페이스<br>
@@ -120,7 +121,7 @@ public <T> void forEach(List<T> list, Consumer<T> c){
 
 forEach(Arrays.asList(1,2,3,4,5), (integer i) -> System.out.println(i));
 ```
-
+<br>
 
 #### 3) Function
 java.util.function.Function<T, R> 인터페이스<br>
