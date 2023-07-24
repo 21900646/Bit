@@ -258,7 +258,9 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 ```java
 List<Apple> heavierThan150g = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 ```
+
 <br>
+
 > 1. filter 메서드의 선언 확인하기.
 filter(inventory, **(Apple apple) -> apple.getWeight() > 150**); 
 <br>
