@@ -261,15 +261,22 @@ List<Apple> heavierThan150g = filter(inventory, (Apple apple) -> apple.getWeight
 
 <br>
 
-> 1. filter 메서드의 선언 확인하기.
+> 1. filter 메서드의 선언 확인하기. <br>
 filter(inventory, **(Apple apple) -> apple.getWeight() > 150**); 
 <br>
-> 2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다.
-filter(List<Apple>inventory, **Predicate<Apple> **p); 
-  
-> 3. Predicate<Apple>은 test라는 한 개의 추상 메서드를 정의하는 함수형 인터페이스이다.
-> 4. test 메서드는 Apple을 받아 boolean을 반환하는 함수 디스크립터를 묘사한다.
 
+> 2. filter 메서드는 두번째 파라미터로 Predicate<Apple> 형식(대상 형식)을 기대한다. <br>
+filter(List<Apple>inventory, **Predicate<Apple> **p); 
+<br>
+
+> 3. Predicate<Apple>은 test라는 한 개의 추상 메서드를 정의하는 함수형 인터페이스이다. <br>
+boolean test(Apple apple)
+
+> 4. test 메서드는 Apple을 받아 boolean을 반환하는 함수 디스크립터를 묘사한다.
+Apple -> boolean
+
+> 5. filter 메서드로 전달된 인수는 이와 같은 요구사항을 만족해야 한다.
+함수 디스크립터는 Apple -> boolean이므로 람다의 시그니처와 일치.
 
 
 #### 2) 같은 람다, 다른 함수형 인터페이스
