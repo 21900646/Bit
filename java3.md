@@ -175,7 +175,6 @@ evenNumbers.test(1000);                                                         
 #### 2) DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
 
 ```
-* 자바8에 추가된 함수형 인터페이스
   [함수형 인터페이스]    [함수 디스크립터]
     Predicate<T>           T -> boolean
     Cunsumer<T>            T -> void
