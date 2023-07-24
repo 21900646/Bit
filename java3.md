@@ -204,20 +204,20 @@ evenNumbers.test(1000);                                                         
 ```Java
 public String procesesFile() throws IOException{
   try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
-    return br.readLine();              // 실제 필요한 작업을 하는 행
+    return br.readLine();                      // 실제 필요한 작업을 하는 행
   }
 }
 ```
 <br>
 
 #### 1단계, 동작파라미터화 시키기.
-```
+```Java         
 String result = processFile(BufferReader br) -> br.readLine() + br.readLine());
 ```
 <br>
 
 #### 2단계, 함수형 인터페이스를 이용해서 동작 전달.
-```
+```Java
 @FunctionalInterface
 public interface BufferedReaderProcessor{
   String process(BufferedReader b) throws IOException;
@@ -242,7 +242,6 @@ public String processFile(BufferedReaderProcessor p) throws IOEcpetion{
 #### 4단계, 람다 전달
 ```Java
 String oneLine = processFile((BufferedReader br) -> br.readLine());
-
 String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine());
 ```
 <br>
@@ -250,7 +249,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 ---
 
 
-## 5. 형식 검사, 형식 추론, 제약
+## 4. 형식 검사, 형식 추론, 제약
 : 컴파일러가 람다 표현식의 유효성을 확인하는 방법 <br>
 #### 1) 형식 검사
 : 콘텍스트를 통해 람다의 형식(Type)을 추론 가능
