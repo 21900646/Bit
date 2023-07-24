@@ -288,7 +288,7 @@ Apple -> boolean
 ```java
 filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 ```
-
+<br><br>
 
 #### 2) 같은 람다, 다른 함수형 인터페이스
 ```
