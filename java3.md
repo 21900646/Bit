@@ -157,18 +157,18 @@ list<Integer> l = map(Arrays.asList("lambdas", "in", "actions"), (String s) -> s
 *박싱 : 기본형을 참조형으로 변환하는 기능 (반대는 언박싱, 자동은 오토박싱)* <br><br>
 #### 1) 오토박싱을 피할 수 있도록 하는 IntPredicate 인터페이스
 ```Java
+// 원래 버전
+Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
+oddNumbers.test(1000);                                                         // 거짓(박싱)
+
+
+// IntPredicate 인터페이스
 public interface IntPredicate{
   boolean test(int t);
 }
 
-
 IntPredicate evenNumbers = (int i) -> i % 2 == 0;
 evenNumbers.test(1000);                                                         // 참(박싱없음)
-
-
-// 원래 버전
-Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
-oddNumbers.test(1000);                                                         // 거짓(박싱)
 ``` 
 <br>
 DoublePredicate, IntConsumer, LongBinaryOperator, IntFunction 등등.
