@@ -368,6 +368,7 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
     
 <br><br>    
 ### * 생성자 참조
+new 키워드를 이용해서 기존 생성자의 참조를 만들 수 있다. <br>
 ```java
 Supplier<Apple> c1 = Apple::new;
 Apple a1 = c1.get();
