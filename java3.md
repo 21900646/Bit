@@ -370,18 +370,12 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 ### * 생성자 참조
 new 키워드를 이용해서 기존 생성자의 참조를 만들 수 있다. <br>
 ```java
+//1
 Supplier<Apple> c1 = Apple::new;
-Apple a1 = c1.get();
-
 Supplier<Apple> c1 = () -> new Apple();
-Apple a1 = c1.get();
 
-Function<Int4eger, Apple> c2 = Apple::new;
-Apple a2 = c2.apply(110);
 
-Function<Int4eger, Apple> c2 = (weight) -> new Apple(weight);
-Apple a2 = c2.apply(110);
-
+//2
 List<Integer> weights = Arrays.asList(7, 3, 4, 10);
 List<Apple> apples = map(weights, Apple::new);
 
@@ -393,25 +387,13 @@ public List<Apple> map(List<Integer> list, Function<Integer, Apple> f){
   return result;
 }
 
+//3
 BiFunction<Color, Integer, Apple> c3 = Apple::new;
-Apple a3 = c3.apply(GREEN, 10);
-
 BiFunction<String, Integer, Apple> c3 = (color, weight) -> new Apple(color, weight);
-Apple a3 = c3.apply(GREEN, 10);
-
-static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
-static {
-  map.put("apple", Apple::new);
-  map.put("orange", Orange::new);
-  ...
-}
-
-public static Fruit giveMeFruit(String fruit, Integer weight){
-  return map.get(fruit.toLowerCase()).apply(weight);
-}
 ```
-
-
+<br>
+---
+<br><br>
 
 ## 7. 람다, 메서드 참조 활용하기
 1단계, 코드 전달하기
