@@ -414,7 +414,7 @@ inventory.sort(comparing(Apple::getWeight));
 ```
 <br><br>
 
----
+-----
 
 <br><br>
 
