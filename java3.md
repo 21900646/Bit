@@ -308,7 +308,7 @@ Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());    
 <br><br>
 
 ### 4) 지역 변수 사용
-*람다 캡처링 : 람다 표현에서 자유 변수 활용*<br>
+*람다 캡처링 : 람다 표현에서 자유 변수(파라미터로 넘겨진 변수가 아닌 외부에서 정의된 변수) 활용*<br>
 제약 사항: 시적으로 final  키워드가 붙거나 final처럼 변경없이 사용해야 함.
 ```Java
 int portNumber = 1337;
