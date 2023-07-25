@@ -342,8 +342,8 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
 (String s) -> this.isValidNames(s)        this::inValidName
 ```
-
-* 만드는 법
+<br><br>
+* 메서드 참조의 3가지 유형
 
   **1. 정적 메소드 참조**
      ex) Integer의 parseInt 메서드 => Integer::parseInt
