@@ -247,7 +247,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 <br>
 
 ---
-
+<br><br>
 
 ## 4. 형식 검사, 형식 추론, 제약
 
@@ -301,6 +301,7 @@ BiFunction<Apple, Apple, Apple, Integer> c3 = (Apple a1, Apple a2) -> a1.getWeig
 ### 3) 형식 추론
 : 자바 컴파일러는 람다 표현식이 사용된 콘텍스트를 이용해서 람다 표현식과 관련된 함수형 인터페이스를 추론. <br>
 -> 대상형식을 사용하여 함수 디스크립터를 알 수 있으므로, 람다의 시그니처도 추론 O.
+
 ```Java
 Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());   // 형식 추론 X.
 Compareator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());              // 형식 추론.
