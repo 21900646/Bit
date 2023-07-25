@@ -412,9 +412,9 @@ inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
 ```java
 inventory.sort(comparing(Apple::getWeight));
 ```
-<br><br>
+<br><br><br>
 
------
+---
 
 <br><br>
 
