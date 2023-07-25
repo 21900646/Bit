@@ -413,7 +413,9 @@ inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
 inventory.sort(comparing(Apple::getWeight));
 ```
 <br><br>
+
 ---
+
 <br><br>
 
 ## 8. 람다 표현식을 조합할 수 있는 유용한 메서드
@@ -427,7 +429,7 @@ inventory.sort(comparing(Apple::getWeight).reversed());
 inventory.sort(comparing(Apple::getWeight).reversed().thenComparing(Apple::getCountry));
 ```
 
-
+<br><br>
 #### 2) Predicate 조합.
 -> Predicate 인터페이스는 복잡한 프리디케이트를 만들 수 있도록 **negate(결과 반전), and, or** 세가지 메서드 제공.
 ```Java
@@ -438,7 +440,7 @@ Predicate<Apple> redAndHeavyApple = redApple.and(apple.getweight() > 150);
 Predicate<Apple> redAndHeavyAppleOrGreen =
   redApple.and(apple.getweight() > 150).or(apple -> GREEN.equals(a.getColor()));
 ```
-
+<br><br>
 
 #### 3) Function 조합.
 -> Function 인터페이스는 Function 인스턴스를 반환하는 andThen, compose 두 가지 디폴트 메서드를 제공.
