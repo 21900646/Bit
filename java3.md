@@ -320,7 +320,8 @@ Runnable r = () -> System.out.println(portNumber);
 
 <br><br>
 
-
+---
+<br><br>
 ## 5. 메서드 참조
 : 특정 메서드만을 호출하는 람다의 축약형.
 ```Java
