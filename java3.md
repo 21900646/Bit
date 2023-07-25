@@ -290,8 +290,10 @@ filter(inventory, (Apple apple) -> apple.getWeight() > 150);
 <br><br>
 
 ### 2) 같은 람다, 다른 함수형 인터페이스
-```
-
+```java
+Comparator<Apple> c1 = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+ToIntBiFunction<Apple, Apple> c2 = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+BiFunction<Apple, Apple, Apple, Integer> c3 = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
 ```
 <br>
 
