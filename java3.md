@@ -343,7 +343,7 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 (String s) -> this.isValidNames(s)        this::inValidName
 ```
 <br><br>
-* 메서드 참조의 3가지 유형
+### * 메서드 참조의 3가지 유형
 
   **1. 정적 메소드 참조**
      ex) Integer의 parseInt 메서드 => Integer::parseInt
@@ -363,8 +363,8 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
     filter(words, this::isValidName)
     ```
-    
-* 생성자 참조
+<br><br>    
+### * 생성자 참조
 ```java
 Supplier<Apple> c1 = Apple::new;
 Apple a1 = c1.get();
