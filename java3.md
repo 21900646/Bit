@@ -374,20 +374,7 @@ new 키워드를 이용해서 기존 생성자의 참조를 만들 수 있다. <
 Supplier<Apple> c1 = Apple::new;
 Supplier<Apple> c1 = () -> new Apple();
 
-
 //2
-List<Integer> weights = Arrays.asList(7, 3, 4, 10);
-List<Apple> apples = map(weights, Apple::new);
-
-public List<Apple> map(List<Integer> list, Function<Integer, Apple> f){
-  List<Apple> result = new ArrayList<>();
-  for(Integer i : list){
-    result.add(f.apply(i));
-  }
-  return result;
-}
-
-//3
 BiFunction<Color, Integer, Apple> c3 = Apple::new;
 BiFunction<String, Integer, Apple> c3 = (color, weight) -> new Apple(color, weight);
 ```
@@ -405,7 +392,7 @@ public class AppleComparator implements Comparator<Apple>{
 }
 inventory.sort(new AppleComparator());
 ```
-
+<br><br>
 2단계, 익명 클래스 사용
 ```java
 inventory.sort(new Comparator<Apple>(){
@@ -414,17 +401,20 @@ inventory.sort(new Comparator<Apple>(){
   }
 });
 ```
+<br><br>
 3단계, 람다 표현식 사용
 ```java
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
 ```
-
+<br><br>
 4단계, 메서드 참조 사용
 
 ```java
 inventory.sort(comparing(Apple::getWeight));
 ```
-
+<br><br>
+---
+<br><br>
 
 ## 8. 람다 표현식을 조합할 수 있는 유용한 메서드
 
