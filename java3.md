@@ -358,18 +358,12 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 
   
     -> 비공개 헬퍼 메서드를 정의한 상황에서 유용.
-    <br>
 
-
-
-  
-    ```Java
     private boolean isValidName(String string){
       return Character.isUpperCase(string.charAt(0));
     }
 
     filter(words, this::isValidName)
-    ```
 
     
 <br><br>    
