@@ -346,16 +346,17 @@ inventory.sort(comparing(Apple::getWeight));        # 메서드 참조 !
 <br><br>
 ### * 메서드 참조의 3가지 유형
 
-  **1. 정적 메소드 참조**
+  **1. 정적 메소드 참조** <br>
      ex) Integer의 parseInt 메서드 => Integer::parseInt
   
-  **2. 다양한 형식의 인스턴스 메서드 참조**
+  **2. 다양한 형식의 인스턴스 메서드 참조** <br>
      ex) String의 length 메서드 => String::length
   
-  **3. 기존 객체의 인스턴스 메서드 참조**
+  **3. 기존 객체의 인스턴스 메서드 참조** <br>
      ex) () -> expensiveTransaction.getValue() => expensiveTransaction::getValue
   
     -> 비공개 헬퍼 메서드를 정의한 상황에서 유용.
+    
   
     ```Java
     private boolean isValidName(String string){
