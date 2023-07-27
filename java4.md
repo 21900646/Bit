@@ -29,7 +29,6 @@
   * collect: 스트림을 다른 형식으로 변환
 
 
-
 ** 칼로리가 400보다 낮은 요리 필터링.
 * 자바7
 ```java
@@ -78,14 +77,44 @@ List<String> lowCaloricDishesName = menu.parallelStream()
                                         .collect(toList());
 ```
 
-filter 같은 연산은 '고수준 빌딩 블록'으로 이루어져 있으므로 특정 스레딩 모델에 제한 X. ?
+filter 같은 연산은 '고수준 빌딩 블록'으로 이루어져 있으므로 특정 스레딩 모델에 제한 X.
 -> 데이터 처리 과정을 병렬화하면 스레드와 락 걱정 X. (스트림 API 덕분) <br>
 
 * 스트림 API 특징
   - 선언형 (더 간결하고 가독성이 좋아진다)
   - 조립할 수 있음 (유연성이 좋아진다)
   - 병렬화 (성능이 좋아진다)
+ 
+* parallelStream
+  - 병렬연산 처리가 쉬워짐.
+  -  ForkJoinPool 방식을 이용하기 때문에 분할이 잘 이루어질 수 있는 데이터 구조이거나, 작업이 독립적이면서 CPU사용이 높은 작업에 적합함.
 
+잉반 병렬 처리
+```java
+ExecutorService executor = Executors.newFixedThreadPool(5);
+for (int i = 0; i < dealmaxList.size(); i++) {
+	final int index = i;
+    executor.submit(() -> {
+		Thread.sleep(5000);
+		System.out.println(Thread.currentThread().getName() 
+			+ ", index=" + index + ", ended at " + new Date()); 	 
+    });
+}       
+executor.shutdown();
+```
+
+```java
+dealmaxList.parallelStream().forEach(index -> {
+	System.out.println("Starting " + Thread.currentThread().getName() 
+		+ ", index=" + index + ", " + new Date());
+	try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) { }
+});
+```
+*참고링크*
+*https://m.blog.naver.com/tmondev/220945933678*
+*https://hamait.tistory.com/612*
 <br><br><br>
 
 
