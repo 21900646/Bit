@@ -121,6 +121,7 @@ dealmaxList.parallelStream().forEach(index -> {
 	} catch (InterruptedException e) { }
 });
 ```
+
 *참고링크* <br>
 *https://m.blog.naver.com/tmondev/220945933678* <br>
 *https://hamait.tistory.com/612*
@@ -191,21 +192,16 @@ List<Stirng> names = menu.stream() // 스트림 open
 <br><br><br><br>
 
 ## 5. 정리
-- 스트림 특징
-  1. 스트림은 원본 데이터를 변경하지 않는다. (데이터소스로부터 읽기만 할 뿐, 데이터 소스 변경 X)
+- 스트림 특징 <br>
+  1. 스트림은 원본 데이터를 변경하지 않는다. (데이터소스로부터 읽기만 할 뿐, 데이터 소스 변경 X) <br>
   2. 일회용이다.
      ```java
 	listStream.sorted().forEach(System.out::print);
 	int numOfElement = listStream.count(); //에러. 스트림이 이미 닫힘
      ``
-  3. 내부 반복으로 처리.
-  4. 병렬처리 가능.
-  병렬 스트림은 내부적으로 fork & join 프레임웍을 이용해서 자동적으로 연산을 병렬로 수행
-  ```java
-	int sum = strStream.parallel()
-                   .mapToInt(s -> s.length())
-                   .sum();
-  ```
+  3. 내부 반복으로 처리. <br>
+  4. 병렬처리 가능. <br>
+  병렬 스트림은 내부적으로 fork/join프레임워크를 이용해서 자동적으로 연산을 병렬로 수행<br>
 - 스트림은 소스에서 추출된 연속 요소로, 데이터 처리 연산을 지원.
 - 스트림은 내부 반복을 지원. (내부 반복은 filter, map, sorted 등의 연산으로 반복을 추상화)
 - 스트림은 중간 연산과 최종 연산이 있다.
