@@ -196,7 +196,8 @@ List<Stirng> names = menu.stream() // 스트림 open
 ## 5. 정리
 - 스트림 특징 <br>
   1. 스트림은 원본 데이터를 변경하지 않는다. (데이터소스로부터 읽기만 할 뿐, 데이터 소스 변경 X) <br>
-  2. 일회용이다.
+  2. 일회용이다. <br>
+  
      ```java
      
 	listStream.sorted().forEach(System.out::print);
