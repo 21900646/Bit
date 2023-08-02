@@ -121,7 +121,7 @@ dealmaxList.parallelStream().forEach(index -> {
 	} catch (InterruptedException e) { }
 });
 ```
-*참고링크*
+*참고링크* <br>
 *https://m.blog.naver.com/tmondev/220945933678* <br>
 *https://hamait.tistory.com/612*
 <br><br><br>
