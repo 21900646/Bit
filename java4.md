@@ -198,8 +198,10 @@ List<Stirng> names = menu.stream() // 스트림 open
   1. 스트림은 원본 데이터를 변경하지 않는다. (데이터소스로부터 읽기만 할 뿐, 데이터 소스 변경 X) <br>
   2. 일회용이다.
      ```java
+     
 	listStream.sorted().forEach(System.out::print);
 	int numOfElement = listStream.count(); //에러. 스트림이 이미 닫힘
+
      ```
   3. 내부 반복으로 처리. <br>
   4. 병렬처리 가능. <br>
