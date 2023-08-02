@@ -162,7 +162,7 @@ List<Stirng> names = menu.stream() // 스트림 open
 		.limit(3) // 중간 연산 끝, short-circuit
 		.collect(toList()); // 종단 연산
 ```
-<br><br>
+<br>
 
 ### #1. 중간 연산
 - 다른 스트림을 반환. -> 여러 중간 연산을 연결해 질의를 생성 가능. <br>
@@ -174,6 +174,7 @@ List<Stirng> names = menu.stream() // 스트림 open
 : 모든 연산을 다 해보기 전에 조건을 만족하면 추가적인 불필요한 연산은 하지 않는다. <br>
 (위의 예시에서는 limit 연산이 쇼트 서킷 연산에 해당된다. 3개의 결과를 얻은 후 앞선 filter와 map연산은 더 이상 수행할 필요가 없어 빠르게 최종 연산을 수행한다.)
 
+<br>
 
 #### 2. 루프 퓨전 <br>
 : 둘 이상의 연산이 합쳐 하나의 연산으로 처리됨
