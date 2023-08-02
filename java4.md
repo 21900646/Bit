@@ -86,18 +86,19 @@ List<String> lowCaloricDishesName = menu.parallelStream()
 *멀티스레드 코드를 구현하지 않아도 데이터를 투명하게 병렬로 처리 가능.* <br><br>
 
 filter 같은 연산은 '고수준 빌딩 블록'으로 이루어져 있으므로 특정 스레딩 모델에 제한 X. 어떤 상황이든 사용 가능. <br>
-데이터 처리 과정을 병렬화하면서 스레드와 락 걱정 X. (스트림 API 덕분) <br>
+데이터 처리 과정을 병렬화하면서 스레드와 락 걱정 X. (스트림 API 덕분) <br><br>
 
-* 스트림 API 특징
+
+### * 스트림 API 특징
   - 선언형 (더 간결하고 가독성이 좋아진다)
   - 조립할 수 있음 (유연성이 좋아진다)
-  - 병렬화 (성능이 좋아진다)
+  - 병렬화 (성능이 좋아진다) <br><br>
  
-* parallelStream
+### * parallelStream
   - 병렬연산 처리가 쉬워짐.
-  -  ForkJoinPool 방식을 이용하기 때문에 분할이 잘 이루어질 수 있는 데이터 구조이거나, 작업이 독립적이면서 CPU사용이 높은 작업에 적합함.
+  -  ForkJoinPool 방식을 이용하기 때문에 분할이 잘 이루어질 수 있는 데이터 구조이거나, 작업이 독립적이면서 CPU사용이 높은 작업에 적합함. <br><br>
 
-잉반 병렬 처리
+### 일반 병렬 처리
 ```java
 ExecutorService executor = Executors.newFixedThreadPool(5);
 for (int i = 0; i < dealmaxList.size(); i++) {
@@ -121,7 +122,7 @@ dealmaxList.parallelStream().forEach(index -> {
 });
 ```
 *참고링크*
-*https://m.blog.naver.com/tmondev/220945933678*
+*https://m.blog.naver.com/tmondev/220945933678* <br>
 *https://hamait.tistory.com/612*
 <br><br><br>
 
@@ -133,15 +134,15 @@ dealmaxList.parallelStream().forEach(index -> {
 <br><br>
 ### 차이점 1 : 데이터를 언제 계산하느냐
 
-- 컬렉션 : 모든 값을 메모리에 저장하는 자료구조. (적극적 생성)
--> 모든 요소는 컬렉션에 추가하기 전에 계산되야 함.
+- 컬렉션 : 모든 값을 메모리에 저장하는 자료구조. (적극적 생성) <br>
+-> 모든 요소는 컬렉션에 추가하기 전에 계산되야 함. <br><br>
   
-- 스트림 : 요청할 때만 요소를 계산 (게으른 생성)
-: 생산자와 소비자 관계를 형성.
-: 게으르게 만들어지는 컬렉션.
+- 스트림 : 요청할 때만 요소를 계산 (게으른 생성) <br>
+: 생산자와 소비자 관계를 형성. <br>
+: 게으르게 만들어지는 컬렉션. <br><br>
 
-스트림도 한 번만 탐색 가능. -> 탐색된 스트림의 요소는 소비.
-다시 탐색을 하려면 새로운 스트림을 만들어야 함.
+스트림도 한 번만 탐색 가능. (탐색된 스트림의 요소는 소비.) <br>
+다시 탐색을 하려면 새로운 스트림을 만들어야 함. <br>
 
 <br><br>
 ### 차이점 2 : 데이터 반복 처리 방법
