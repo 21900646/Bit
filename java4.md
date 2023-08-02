@@ -200,7 +200,7 @@ List<Stirng> names = menu.stream() // 스트림 open
      ```java
 	listStream.sorted().forEach(System.out::print);
 	int numOfElement = listStream.count(); //에러. 스트림이 이미 닫힘
-     ``
+     ```
   3. 내부 반복으로 처리. <br>
   4. 병렬처리 가능. <br>
   병렬 스트림은 내부적으로 fork/join프레임워크를 이용해서 자동적으로 연산을 병렬로 수행<br>
