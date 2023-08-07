@@ -18,16 +18,41 @@ numbers.stream()
 
 ## 2. 스트림 슬라이싱
 ### 1) 프레디케이트를 이용한 슬라이싱, TAKEWHILE & DROPWHILE
+#### TAKEWHILE 활용
+```java
+List<Dish> filteredMenu = specialMenu.stream()
+                                      .filter(dish -> dish.getCalories() < 320)
+                                      .collect(toList());
+```
+filter는 조건에 대해 다 검사하며 참인것만 다음으로 넘어가지만, <br> 
+takeWhile은 조건에 대해 참이 아닐경우 바로 거기서 멈추게 된다. 
+
+#### DROPWIHLE 활용
+TAKEWHILE과 반대.<br>
+프레디케이트가 거짓이 되면 그 지점에서 작업을 중단 후 남은 요소 반환. <br><br>
 
 ### 2) 스트림 축소, Limit
+```java
+List<Dish> filteredMenu = specialMenu.stream()
+                                      .filter(dish -> dish.getCalories() > 300)
+                                      .limit(3)
+                                      .collect(toList());
+```
+프레디케이트와 일치하는 처음 세 요소를 선택 후 즉시 결과 반환.
 
 ### 3) 요소 건너뛰기, Skip
-
-
-
+```java
+List<Dish> dishes = menu.stream()
+                        .filter(dish -> dish.getCalories() > 300)
+                        .skip(2)
+                        .collect(toList());
+```
 
 ## 3. 매핑
-### 1) 스트림의 각 요소에 함수 적용하기, MAp
+: 특정 객체엣어 특정 데이터를 선택하는 작업. <br>
+
+### 1) 스트림의 각 요소에 함수 적용하기, Map
+
 
 ### 2) 스트림 평면화, FlatMap
 
@@ -69,3 +94,12 @@ numbers.stream()
 
 
 ## 7. 스트림 만들기
+### 1) 값으로 스트림 만들기
+
+### 2) null이 될 수 있는 객체로 스트림 만들기
+
+### 3) 배열로 스트림 만들기
+
+### 4) 파일로 스트림 만들기
+
+### 5) 함수로 무한 스트림 만들기기
