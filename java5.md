@@ -105,8 +105,14 @@ boolean isHealthy = menu.stream()
 ```
 ** limit도 쇼트서킷 연산임. <br><br>
 
-### 2) 요소 검색, FindAny
-
+### 2) 임의의 요소 반환, FindAny
+```java
+Optional<Dish> dish = menu.stream()
+                          .filter(Dish::isVegetarian)
+                          .findAny();
+```
+** Optional<T>란, null 버그를 피할 수 있도록 <br>
+값의 존재나 부재 여부를 표현하는 컨테이너 클래스. <br><br>
 
 ### 3) 첫번째 요소 찾기, FindFirst
 
