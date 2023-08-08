@@ -52,15 +52,58 @@ List<Dish> dishes = menu.stream()
 : 특정 객체엣어 특정 데이터를 선택하는 작업. <br>
 
 ### 1) 스트림의 각 요소에 함수 적용하기, Map
-
+```java
+List<Integer> dishNameLengths = menu.stream()
+                                    .map(Dish::getName)
+                                    .map(String::length)
+                                    .collect(toList());
+```
 
 ### 2) 스트림 평면화, FlatMap
+: map(Arrays::stream)과는 다르게 하나의 평면화된 스트림을 반환. <br>
+1. 일반적 -> 결과 : Stream<String[]>
 
+```java
+words.stream()                      #결과 : Stream<String>
+    .map(word -> word.split(""))    #결과 : Stream<String[]>
+    .distinct()                     #결과 : Stream<String[]>
+    .collect(toList());             #결과 : List<String[]>
+```
+<br>
 
+2. map과 Arrays.stream 활용 -> 결과 : List<Stream<String>>
+
+```java
+words.stream() 
+    .map(word -> word.split(""))
+    .map(Arrays::stream)    
+    .distinct()  
+    .collect(toList()); 
+```
+<br>
+
+3. flatMap 사용
+
+```java
+words.stream()                      #결과 : Stream<String>
+    .map(word -> word.split(""))    #결과 : Stream<String[]>
+    .flatMap(Arrays::stream)        #결과 : Stream<String>
+    .distinct()                     #결과 : Stream<String>
+    .collect(toList());             #결과 : List<String>
+```
+<br>
 
 
 ## 4. 검색과 매칭
 ### 1) 쇼트서킷, AnyMatch, AllMatach, NoneMatch
+- anyMactch : 프레디케이트가 적어도 한 요소가 있다면 true
+- allMatch : 프레디케이트가 모두 일치한다면 true
+- nonMatch : 프레디케이트와 일치하는 요소가 없다면 true
+```java
+boolean isHealthy = menu.stream()
+                        .nonMatch(d -> d.getCalories() >= 1000);
+```
+** limit도 쇼트서킷 연산임. <br><br>
 
 ### 2) 요소 검색, FindAny
 
