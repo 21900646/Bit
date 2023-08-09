@@ -213,8 +213,13 @@ int max = maxCalories.orElse(1);  # 값이 없을 때 기본 최댓값을 명시
 ```
 <br><br>
 
-### 2) 숫자 범위
-
+### 2) 숫자 범위, range와 rangeClosed
+IntStream과 LongStream에서 제공하는 메서드. <br>
+range는 시작값과 종료값이 결과에 포함 X. <br>
+```java
+IntStream evenNumbers = IntStream.rangeClose(1, 100);
+                                  .filter(n -> n % 2 == 0);
+```
 
 ### 3) 숫자 스트림 활용: 피타고라스 수
 
