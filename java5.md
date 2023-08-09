@@ -167,15 +167,51 @@ int count = menu.stream()
                 .map(d -> 1)
                 .reduce(0, (a, b) -> a + b);
 ```
-
+---
+<br><br>
 ## 6. 숫자형 스트림
+```java
+int calories = menu.stream()
+                   .map(Dish::getCalories)
+                   .reduce(0, Integer::sum);
+```
+-> 배경 : 합계 계산 전에 Integer를 기본형으로 언박싱하는, 박싱 비용이 존재. <br>
+직접 호출할 수 있는 방법은 없는가?
+
 ### 1) 기본형 특화 스트림
+: 박싱 비용을 피할 수 있도록 InteStream, DoubleStream 등을 제공. <br><br>
+
 ### 1-1) 숫자 스트림으로 매핑
+```java
+int calories = menu.stream()
+                   .mapToInt(Dish::getCalories)       # IntStream으로 반환.
+                   .sum();
+```
 
 ### 1-2) 객체 스트림으로 복원하기
 
-### 1-3) 기본값 : OptionalInt
+[배경] <br>
+IntStream의 map 연산은 'int를 인수로 받아서 int를 반환하는 람다'를 인수로 받는다. <br>
+정수가 아닌 Dish와 같은 다른 값을 반환하고 싶다면?
 
+```java
+IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+Stream<Integer> stream = intStream.boxed();        # 숫자 스트림 -> 스트림
+```
+<br><br>
+
+### 1-3) 기본값 : OptionalInt
+IntStream에서 최댓값을 찾을 때, 0이라는 기본값으로 인해 <br>
+스트림에 요소가 없는 상황과 실제 최댓값이 0인 상황을 구별 X. <br>
+
+```java
+OptionalInt maxcalories = menu.stream()
+                              .mapToInt(Dish::getCalories)
+                              .max();
+
+int max = maxCalories.orElse(1);  # 값이 없을 때 기본 최댓값을 명시적으로 설정 가능.
+```
+<br><br>
 
 ### 2) 숫자 범위
 
