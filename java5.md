@@ -220,10 +220,15 @@ range는 시작값과 종료값이 결과에 포함 X. <br>
 IntStream evenNumbers = IntStream.rangeClose(1, 100);
                                   .filter(n -> n % 2 == 0);
 ```
-
+<br><br>
 ### 3) 숫자 스트림 활용: 피타고라스 수
-
-
+```java
+Stream<double[]> pythagoreanTriples2 = IntStream.rangeClose(1, 100).boxed()
+                                                .flatMap(a -> IntStream.rangeClosed(a, 100)
+                                                .mapToObj(b -> new double[]{a, b, Math.sqrt(a*a + b*b)})
+                                                .filter(t -> t[2] % 1 == 0));
+```
+<br><br>
 
 ## 7. 스트림 만들기
 ### 1) 값으로 스트림 만들기
