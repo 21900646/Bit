@@ -106,12 +106,18 @@ boolean isHealthy = menu.stream()
 ** limit도 쇼트서킷 연산임. <br><br>
 
 ### 2) 임의의 요소 반환, FindAny
+: 가장 먼저 찾은 요소. 결과값이 실행할 때마다 달라짐. <br>
+: 병렬성 때문에 요소 반환 순서가 상관없다면 제약이 적은 FindAny 사용. <br>
+(병렬 실행에서는 첫 번쨰 요소를 찾기 어려움) <br>
+
 ```java
 Optional<Dish> dish = menu.stream()
                           .filter(Dish::isVegetarian)
                           .findAny()                       # Optional<Dish> 변환
                           .ifPresent(dish -> System.out.println(dish.getName());
 ```
+<br>
+
 ** Optional<T>란, null 버그를 피할 수 있도록 <br>
 값의 존재나 부재 여부를 표현하는 컨테이너 클래스. <br><br>
 
@@ -124,19 +130,43 @@ Optional<Dish> dish = menu.stream()
 * T orElse(T other)  <br>
 : 값이 있으면 값을 반환, 없으면 기본값을 반환. <br><br>
 
-### 3) 첫번째 요소 찾기, FindFirst
+### 3) 스트림에서 첫번째 요소 찾기, FindFirst
 ```java
-
+List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5);
+Optional<Integer> firstSquareDivisibleByThree = someNumbers.stream()
+                                                           .map(n -> n*n)
+                                                           .filter(n -> n % 3 == 0)
+                                                           .findFirst(); //9
 ```
-
+<br><br>
 
 ## 5. 리듀싱
+: Integer 같은 결과가 나올 때까지 스트림의 모든 요소를 반복적으로 처리해야함. <br>
+-> 모든 스트림 요소를 처리해서 값으로 도출해야 함. (= 리듀싱 연산, 폴드(함수형 프로그래밍 용어)) <br><br>
+
+
 ### 1) 요소의 합, Reduce
+```java
+int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+
+# Stream에 아무 요소가 없다면 합계를 반환할 수 없기 때문.
+Optional<Integer> sum = numbers.stream().reduce((a, b) -> a + b);
+```
+누적값 + 스트림에서 소비한 값 <br><br>
 
 
 ### 2) 최댓값과 최솟값, Reduce(Integer::max) || Reduce(Integer::min)
-
-
+```java
+Optional<Integer> max = numbers.stream().reduce(Integer::max);
+Optional<Integer> min = numbers.stream().reduce(Integer::min);
+```
+<br><br>
+** 맵 리듀스 패턴
+```java
+int count = menu.stream()
+                .map(d -> 1)
+                .reduce(0, (a, b) -> a + b);
+```
 
 ## 6. 숫자형 스트림
 ### 1) 기본형 특화 스트림
