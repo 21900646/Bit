@@ -231,7 +231,7 @@ Stream<double[]> pythagoreanTriples2 = IntStream.rangeClose(1, 100).boxed()
 ```
 <br><br>
 ---
-<br>
+<br><br>
 
 ## 7. 스트림 만들기
 ### 1) 값으로 스트림 만들기, Stream.of
@@ -239,20 +239,20 @@ Stream<double[]> pythagoreanTriples2 = IntStream.rangeClose(1, 100).boxed()
 Stream<String> stream = Stream.of("Modern", "Java", "In", "Action");
 ```
 ** Stream<String> emptyStream = Stream.empty();
-
+<br><br>
 
 ### 2) null이 될 수 있는 객체로 스트림 만들기, Stream.ofNullable
 ```java
 Stream<String> stream = Stream.of("Modern", "Java", "In", "Action")
                               .flatMap(key -> Stream.ofNullable(System.getPropertyes(key)));
 ```
-
+<br><br>
 ### 3) 배열로 스트림 만들기, Arrays.stream
 ```java
 int[] numbers - {2, 3, 5, 7, 11, 13};
 int sum = Arrays.stream(numbers).sum();
 ```
-
+<br><br>
 ### 4) 파일로 스트림 만들기
 ```java
 long uniqueWords = 0;
