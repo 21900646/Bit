@@ -267,19 +267,26 @@ try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCha
 ** 무한 스트림이란? 크기가 고정되지 않은 스트림. (=언바운드 스트림)<br><br>
 * iterate 메서드
 ```java
+[iterate 메서드로 생성 후, 제어방법]
+// # 1
 Stream.iterate(0, n-> n + 2)
-      .limit(10)             # 제어
+      .limit(10)                           # 제어
       .forEach(System.out::println);
 
+// # 2
 Stream.iterate(0, n -> n + 2, n -> n + 4)  # 제어
       .forEach(System.out::println);
 
+// # 3
 Stream.iterate(0, n-> n + 2)
-      .takeWhile(n -> n + 4)             # 제어
+      .takeWhile(n -> n + 4)               # 제어
+      .forEach(System.out::println); 
+```
+<br><br>
+* generate 메서드 <br>
+: 값을 연속적으로 계산X. -> Supplier<T>를 인수로 받아서 새로운 값 생성.
+```java
+Stream.generate(Math::random)
+      .limit(5)                            # 제어
       .forEach(System.out::println);
 ```
-
-* generate 메서드
-
-
-
