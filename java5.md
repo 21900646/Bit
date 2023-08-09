@@ -6,6 +6,7 @@ List<Dish> vegetarianMenu = menu.stream()
                                 .filter(Dish::isVegetarian)
                                 .collect(toList());
 ```
+<br>
 
 ### 2) 고유 요소 필터링, Distinct
 ```java
@@ -15,6 +16,7 @@ numbers.stream()
       .distinct()
       .forEach(System.out::println);
 ```
+<br>
 
 ## 2. 스트림 슬라이싱
 ### 1) 프레디케이트를 이용한 슬라이싱, TAKEWHILE & DROPWHILE
@@ -26,11 +28,11 @@ List<Dish> filteredMenu = specialMenu.stream()
 ```
 filter는 조건에 대해 다 검사하며 참인것만 다음으로 넘어가지만, <br> 
 takeWhile은 조건에 대해 참이 아닐경우 바로 거기서 멈추게 된다. 
-
+<br><br>
 #### DROPWIHLE 활용
 TAKEWHILE과 반대.<br>
 프레디케이트가 거짓이 되면 그 지점에서 작업을 중단 후 남은 요소 반환. <br><br>
-
+<br><br>
 ### 2) 스트림 축소, Limit
 ```java
 List<Dish> filteredMenu = specialMenu.stream()
@@ -39,7 +41,7 @@ List<Dish> filteredMenu = specialMenu.stream()
                                       .collect(toList());
 ```
 프레디케이트와 일치하는 처음 세 요소를 선택 후 즉시 결과 반환.
-
+<br><br>
 ### 3) 요소 건너뛰기, Skip
 ```java
 List<Dish> dishes = menu.stream()
@@ -47,10 +49,10 @@ List<Dish> dishes = menu.stream()
                         .skip(2)
                         .collect(toList());
 ```
-
+<br><br>
 ## 3. 매핑
 : 특정 객체엣어 특정 데이터를 선택하는 작업. <br>
-
+<br><br>
 ### 1) 스트림의 각 요소에 함수 적용하기, Map
 ```java
 List<Integer> dishNameLengths = menu.stream()
@@ -58,7 +60,7 @@ List<Integer> dishNameLengths = menu.stream()
                                     .map(String::length)
                                     .collect(toList());
 ```
-
+<br><br>
 ### 2) 스트림 평면화, FlatMap
 : map(Arrays::stream)과는 다르게 하나의 평면화된 스트림을 반환. <br>
 1. 일반적 -> 결과 : Stream<String[]>
@@ -70,7 +72,7 @@ words.stream()                      #결과 : Stream<String>
     .collect(toList());             #결과 : List<String[]>
 ```
 <br>
-
+<br>
 2. map과 Arrays.stream 활용 -> 결과 : List<Stream<String>>
 
 ```java
@@ -80,7 +82,7 @@ words.stream()
     .distinct()  
     .collect(toList()); 
 ```
-<br>
+<br><br>
 
 3. flatMap 사용
 
@@ -91,9 +93,8 @@ words.stream()                      #결과 : Stream<String>
     .distinct()                     #결과 : Stream<String>
     .collect(toList());             #결과 : List<String>
 ```
-<br>
-
-
+<br><br>
+---
 ## 4. 검색과 매칭
 ### 1) 쇼트서킷, AnyMatch, AllMatach, NoneMatch
 - anyMactch : 프레디케이트가 적어도 한 요소가 있다면 true
@@ -229,6 +230,8 @@ Stream<double[]> pythagoreanTriples2 = IntStream.rangeClose(1, 100).boxed()
                                                 .filter(t -> t[2] % 1 == 0));
 ```
 <br><br>
+---
+<br>
 
 ## 7. 스트림 만들기
 ### 1) 값으로 스트림 만들기, Stream.of
