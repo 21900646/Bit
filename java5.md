@@ -270,6 +270,13 @@ try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCha
 Stream.iterate(0, n-> n + 2)
       .limit(10)             # 제어
       .forEach(System.out::println);
+
+Stream.iterate(0, n -> n + 2, n -> n + 4)  # 제어
+      .forEach(System.out::println);
+
+Stream.iterate(0, n-> n + 2)
+      .takeWhile(n -> n + 4)             # 제어
+      .forEach(System.out::println);
 ```
 
 * generate 메서드
