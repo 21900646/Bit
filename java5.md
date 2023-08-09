@@ -109,13 +109,25 @@ boolean isHealthy = menu.stream()
 ```java
 Optional<Dish> dish = menu.stream()
                           .filter(Dish::isVegetarian)
-                          .findAny();
+                          .findAny()                       # Optional<Dish> 변환
+                          .ifPresent(dish -> System.out.println(dish.getName());
 ```
 ** Optional<T>란, null 버그를 피할 수 있도록 <br>
 값의 존재나 부재 여부를 표현하는 컨테이너 클래스. <br><br>
 
-### 3) 첫번째 요소 찾기, FindFirst
+* isPresent() <br>
+: Optional이 값을 포함하면 true, 없으면 false. <br><br>
+* ifPresent(Consumer<T> block)  <br>
+: 값이 있으면 주어진 블록 실행. T형식의 인수를 받으면 void를 반환. <br><br>
+* T get()  <br>
+: 값이 존재하면 값을 반환, 없으면 NoSuchElementException. <br><br>
+* T orElse(T other)  <br>
+: 값이 있으면 값을 반환, 없으면 기본값을 반환. <br><br>
 
+### 3) 첫번째 요소 찾기, FindFirst
+```java
+
+```
 
 
 ## 5. 리듀싱
