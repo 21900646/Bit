@@ -231,12 +231,48 @@ Stream<double[]> pythagoreanTriples2 = IntStream.rangeClose(1, 100).boxed()
 <br><br>
 
 ## 7. 스트림 만들기
-### 1) 값으로 스트림 만들기
+### 1) 값으로 스트림 만들기, Stream.of
+```java
+Stream<String> stream = Stream.of("Modern", "Java", "In", "Action");
+```
+** Stream<String> emptyStream = Stream.empty();
 
-### 2) null이 될 수 있는 객체로 스트림 만들기
 
-### 3) 배열로 스트림 만들기
+### 2) null이 될 수 있는 객체로 스트림 만들기, Stream.ofNullable
+```java
+Stream<String> stream = Stream.of("Modern", "Java", "In", "Action")
+                              .flatMap(key -> Stream.ofNullable(System.getPropertyes(key)));
+```
+
+### 3) 배열로 스트림 만들기, Arrays.stream
+```java
+int[] numbers - {2, 3, 5, 7, 11, 13};
+int sum = Arrays.stream(numbers).sum();
+```
 
 ### 4) 파일로 스트림 만들기
+```java
+long uniqueWords = 0;
+try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())){
+                            uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" ")))
+                                               .distinct()  
+                                               .count();
+} catch(IOException e){
 
-### 5) 함수로 무한 스트림 만들기기
+}
+```
+** 스트림은 자원을 자동으로 해제할 수 있는 AutoCloseable이므로 try-finally가 필요 X. <br><br>
+
+### 5) 함수로 무한 스트림 만들기, Stream.iterate와 Stream.generate
+** 무한 스트림이란? 크기가 고정되지 않은 스트림. (=언바운드 스트림)<br><br>
+* iterate 메서드
+```java
+Stream.iterate(0, n-> n + 2)
+      .limit(10)             # 제어
+      .forEach(System.out::println);
+```
+
+* generate 메서드
+
+
+
