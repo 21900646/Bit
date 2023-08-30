@@ -191,7 +191,8 @@ public Function<List<T>, List<T>> finisher() {
 }
 ```
 <br>
-![Uploading image.png…]()
+![image](https://github.com/21900646/Bit/assets/69943167/237582fb-4fa6-4827-8058-a10feec3e44d)
+
 
 
 * combiner 메서드 : 두 결과 컨테이너 병합.
