@@ -106,13 +106,101 @@ Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.st
 //}
 ```
 
+<br><br>
+* 서브그룹으로 데이터 수집
+* 1) 개수 세기
+```java
+Map<Dish.Type, Long> typesCount = menu.stream().collect(
+                      groupingBy(Dish::getType, counting()));
+
+//{MEAT=3, FISH=2, OTHER=4}
+```
+
+<br><br>
+* 2) 서브그룹에서 가장 칼로리가 높은 요리 찾기
+: CollectingAndThen 메서드는 Collecting을 진행한 후 그 결과로 메서드를 하나 더 호출 할 수 있게 해줌.
+```java
+Map<Dish.Type, Dish> mostCaloricByType = menu.stream()
+                                              .collect(groupingBy(Dish::getType,
+                                                      collectingAndThen(
+                                                            maxBy(comparingInt(Dish::getCalories)),       //결과 : Optional[pork]
+                                                      Optional::get)));                                   //결과 : pork
+
+//{FISH=salmon, OTHER=pizza, MEAT=pork}
+```
+
 ### 3. 요소 분할
+: 프레디케이트를 분류 함수로 사용하는 특수한 그룹화 기능. 키 형식은 Boolean. <br><br>
+
+```java
+Map<Boolean, List<Dish>> partitionedMenu =
+              menu.stream().collect(partitioningBy(Dish::isVegetarian));
+
+// {false=[pork, beef, chicken, prawns, salmon],
+//  true=[french fries, rice, season fruit, pizza]}
 
 
+List<Dish> vegetarianDishes = partitionedMenu.get(true);
+
+List<Dish> vegetarianDishes =
+            menu.stream().filter(Dish::isVegetarian).collect(toList()); // 위와 동일한 결과
+```
+<br><br>
 
 
+## 4. Collector 인터페이스
+```
+public interface Collector<T, A, R> {
+    Supplier<A> supplier();
+    BiConsumer<A, T> accumulator();
+    BinaryOperator<A> combiner();
+    Function<A, R> finisher();
+    Set<Characteristics> characteristics();
+}
+```
+<br>
+[시그니처]
+- T는 수집될 스트림 항목의 제네릭 형식.
+- A는 누적자, 즉 수집 과정에서 중간 결과를 누적하는 객체의 형식.
+- R은 수집 연산 결과 객체의 형식.
+<br><br>
+
+[메서드]
+* supplier 메서드 : 새로운 결과 컨테이너 만들기. 
+```java
+public Supplier<List<T>> supplier() {
+    return ArrayList::new;
+}
+```
+<br>
+
+* accumulator 메서드 : 결과 컨테이너에 요소 추가하기.
+-> 리듀싱 연산을 수행하는 함수를 반환.
+```java
+public BiConsumer<List<T>, T> accumulator() {
+    return List::add;
+}
+```
+<br>
+
+* finisher 메서드 : 최종 변환값을 결과 컨테이너로 적용하기.
+-> 스트림 탐색을 끝내고 누적자 객체를 최종 결과로 변환하면서 호출할 함수를 반환.
+```java
+public Function<List<T>, List<T>> finisher() {
+    return Function.identity();
+}
+```
+<br>
+![Uploading image.png…]()
 
 
-## 5. Collector 인터페이스
+* combiner 메서드 : 두 결과 컨테이너 병합.
+
+<br>
+
+* Characteristics 메서드
+
+<br>
+
 
 ## 6. 커스텀 컬렉터를 구현해서 성능 개선하기
