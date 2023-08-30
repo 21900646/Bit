@@ -27,7 +27,7 @@ Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesCompara
 ```
 <br>
 
-##### 1-3. 요약 연산, Collectors.summingInt()
+##### 1-3. 요약 연산
 : 객체를 int로 매핑하는 함수를 인수로 받는다. <br>
 - 합 계산 <br>
   : Collectors.summingInt, summingLong, summingDouble <br><br>
@@ -43,7 +43,6 @@ int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
 double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
 
 IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
-//결과값은
 //IntSummaryStatistics{count=9, sum=4300, min=120, average=477.77778, max=800}
 ```
 <br>
