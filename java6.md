@@ -17,7 +17,8 @@ import static java.util.stream.Collectors.*;
 
 long howManyDishes = menu.stream.collect(counting());
 ```
-<br><br>
+<br>
+
 ##### 1-2. 최대 최소 검색, Collectors.maxBy() OR Collectors.minBy()
 : 스트림 요소를 비교하는 데 사용할 Comparator를 인수로 받는다. <br>
 ```java
@@ -58,8 +59,7 @@ String shortMenu = menu.stream().map(Dish::getName).collect(joining(", "));
 
 #### 1-5. 범용 리듀싱 요약 연산
 ```java
-
-
+Optional<Dish> mostCalorieDish = menu.stream().collect(reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2);
 ```
 
 
