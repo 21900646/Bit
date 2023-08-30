@@ -222,8 +222,8 @@ public BinaryOperator<List<T>> combiner() {
 public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, List<Integer>>, Map<Boolean, List<Integer>>>
 <br><br>
 
+다섯 메서드 구현!
 **2단계. 리듀싱 연산 구현**
-다섯 메서드 구현
 ```java
 public Supplier<Map<Boolean, List<Integer>>> supplier(){
   return () -> new HashMap<Boolean, List<Integer>>() {{
@@ -239,8 +239,26 @@ public BiConsumer<Map<Boolean, List<Integer>>, Integer> accumulator(){
   };
 }
 ```
+<br>
 3단계. 병렬 실행할 수 있는 컬렉터 만들기(가능하다면)
+```java
+public BinaryOperator<Map<Boolean, List<Integer>>> combiner(){
+  return (Map<Boolean, List<Integer>> map1, Map<Boolean, List<Integer>> map2) -> {
+    map1.get(true).addAll(map2.get(true));
+    map1.get(false).addAll(map2.get(false));
+    return map1;
+  };
+}
+```
 4단계. finisher 메서드와 컬렉터의 characteristics 메서드
+```java
+public Function<Map<Boolean, List<Integer>>,
+                Map<Boolean, List<Integer>>> finisher(){
+    return Function.identity();
 
+public Set<Characteristics> characteristics(){
+  return Collections.unmodifiableSet(EnumSet.of(IDENTITY_FINISH));
+}
+```
 
 
