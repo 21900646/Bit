@@ -159,7 +159,7 @@ public interface Collector<T, A, R> {
 }
 ```
 <br>
-[시그니처]
+[시그니처] <br>
 - T는 수집될 스트림 항목의 제네릭 형식.
 - A는 누적자, 즉 수집 과정에서 중간 결과를 누적하는 객체의 형식.
 - R은 수집 연산 결과 객체의 형식.
@@ -196,11 +196,19 @@ public Function<List<T>, List<T>> finisher() {
 
 
 * combiner 메서드 : 두 결과 컨테이너 병합.
-
+-> 스트림의 서로 다른 서브파트를 병렬로 처리할 때 이 결과를 어떻게 처리할 지 정의.
+```java
+public BinaryOperator<List<T>> combiner() {
+    return (list1, list2) -> {
+        list1.addAll(list2);
+        return list1;
+    };
+}
+```
 <br>
 
 * Characteristics 메서드
-
+: 
 <br>
 
 
