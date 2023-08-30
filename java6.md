@@ -208,8 +208,25 @@ public BinaryOperator<List<T>> combiner() {
 <br>
 
 * Characteristics 메서드 <br>
-: 
+1) UNORDERED - 리듀싱 결과는 스트림 요소의 방문 순서나 누적 순서에 영향을 받지 X.
+2) CONCURRENT - 병렬 리듀싱 수행 가능.
+3) IDENTITY_FINISH - 리듀싱 과정의 최종 결과로 누적자 객체를 바로 사용 가능.
 <br>
 
 
 ## 6. 커스텀 컬렉터를 구현해서 성능 개선하기
+**1단계. collector 클래스 시그니처 정의**
+기존의 Collector 인터페이스 정의 <br>
+= public interface Collector<T, A, R>
+<br><br>
+public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, List<Integer>>, Map<Boolean, List<Integer>>>
+<br><br>
+
+**2단계. 리듀싱 연산 구현**
+```
+
+3단계. 병렬 실행할 수 있는 컬렉터 만들기(가능하다면)
+4단계. finisher 메서드와 컬렉터의 characteristics 메서드
+
+
+
