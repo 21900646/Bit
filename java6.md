@@ -85,7 +85,7 @@ Map<Dish.Type, List<Dish>> caloricDishesByType = menu.stream().collect(groupingB
 ```
 
 <br><br>
-*두 가지 이상의 기준을 동시에 적용해서 그룹화 하려면?
+* 두 가지 이상의 기준을 동시에 적용해서 그룹화 하려면?
 ```java
 Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.stream().collect(groupingBy(Dish::getType,
                                                                                                 groupingBy(dish -> {
