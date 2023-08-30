@@ -50,6 +50,7 @@ IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish:
 
 ##### 1-4. 문자열 연결, Collectors.joining()
 : 내부적으로 StringBuilder를 이용해서 문자열을 하나로 만든다. <br>
+만약 Dish class 내부에 toString 메서드가 포함되어있다면 map은 생략 가능. <br><br>
 ```java
 String shortMenu = menu.stream().map(Dish::getName).collect(joining());
 String shortMenu = menu.stream().map(Dish::getName).collect(joining(", "));
