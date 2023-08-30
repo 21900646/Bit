@@ -17,7 +17,7 @@ import static java.util.stream.Collectors.*;
 
 long howManyDishes = menu.stream.collect(counting());
 ```
-<br>
+<br><br>
 ##### 1-2. 최대 최소 검색, Collectors.maxBy() OR Collectors.minBy()
 : 스트림 요소를 비교하는 데 사용할 Comparator를 인수로 받는다. <br>
 ```java
