@@ -99,12 +99,11 @@ Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.st
                                                                       )                             
 );
 
-//
-{
-MEAT = {DIET=[chicken], NORMAL=[beef], FAT=[prok]},
-FISH = {DIET=[prawns], NORMAL=[salmon]},
-OTHER = {DIET=[rice, seasonal fruit], NORMAL=[french fries, pizza]}
-}
+//{
+//MEAT = {DIET=[chicken], NORMAL=[beef], FAT=[prok]},
+//FISH = {DIET=[prawns], NORMAL=[salmon]},
+//OTHER = {DIET=[rice, seasonal fruit], NORMAL=[french fries, pizza]}
+//}
 ```
 
 ### 3. 요소 분할
