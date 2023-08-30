@@ -10,10 +10,45 @@ collector 인터페이스 구현 : 스트림의 요소를 어떤 식으로 도�
 
 
 ### Collectors에서 제공하는 메서드의 기능 (미리 정의된 컬렉터)
-#### 1. 스트림 요소를 하나의 값으로 리듀스하고 요약
+#### 1. 스트림 요소를 하나의 값으로 리듀스하고 요약 <br>
 
+##### 1-1. 개수 세기, Collectors.counting()
+```java
+import static java.util.stream.Collectors.*;
 
+long howManyDishes = menu.stream.collect(counting());
+```
 
+##### 1-2. 최대 최소 검색, Collectors.maxBy() OR Collectors.minBy()
+: 스트림 요소를 비교하는 데 사용할 Comparator를 인수로 받는다. <br>
+```java
+Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
+Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesComparator));
+```
+<br>
+
+##### 1-3. 요약 연산, Collectors.summingInt()
+: 객체를 int로 매핑하는 함수를 인수로 받는다. <br>
+- 합 계산 : Collectors.summingInt, summingLong, summingDouble
+- 평균값 계산 : Collectors.averagingInt, averagingLong, averagingDouble
+- 요소 수, 합계, 평균, 최대 최소값 계산 : summarizingInt(IntSummaryStatistics), summarizingLong(LongSummaryStatistics), summarizingDouble(DoubleSummaryStatistics)
+<br><br>
+```java
+int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
+double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
+IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
+
+//결과값은
+//IntSummaryStatistics{count=9, sum=4300, min=120, average=477.77778, max=800}
+```
+<br>
+
+##### 1-4. 문자열 연결, Collectors.maxBy() OR Collectors.minBy()
+: 스트림 요소를 비교하는 데 사용할 Comparator를 인수로 받는다. <br>
+```java
+
+```
+<br>
 
 #### 2. 요소 그룹화
 
