@@ -195,7 +195,7 @@ public Function<List<T>, List<T>> finisher() {
 
 
 
-* combiner 메서드 : 두 결과 컨테이너 병합.
+* combiner 메서드 : 두 결과 컨테이너 병합. <br>
 -> 스트림의 서로 다른 서브파트를 병렬로 처리할 때 이 결과를 어떻게 처리할 지 정의.
 ```java
 public BinaryOperator<List<T>> combiner() {
@@ -207,7 +207,7 @@ public BinaryOperator<List<T>> combiner() {
 ```
 <br>
 
-* Characteristics 메서드
+* Characteristics 메서드 <br>
 : 
 <br>
 
