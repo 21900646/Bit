@@ -48,10 +48,11 @@ IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish:
 ```
 <br>
 
-##### 1-4. 문자열 연결, Collectors.maxBy() OR Collectors.minBy()
-: 스트림 요소를 비교하는 데 사용할 Comparator를 인수로 받는다. <br>
+##### 1-4. 문자열 연결, Collectors.joining()
+: 내부적으로 StringBuilder를 이용해서 문자열을 하나로 만든다. <br>
 ```java
-
+String shortMenu = menu.stream().map(Dish::getName).collect(joining());
+String shortMenu = menu.stream().map(Dish::getName).collect(joining(", "));
 ```
 <br>
 
