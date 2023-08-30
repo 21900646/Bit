@@ -39,9 +39,10 @@ Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesCompara
 
 ```java
 int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
-double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
-IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
 
+double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
+
+IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
 //결과값은
 //IntSummaryStatistics{count=9, sum=4300, min=120, average=477.77778, max=800}
 ```
