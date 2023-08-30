@@ -50,18 +50,62 @@ IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish:
 
 ##### 1-4. 문자열 연결, Collectors.joining()
 : 내부적으로 StringBuilder를 이용해서 문자열을 하나로 만든다. <br>
-만약 Dish class 내부에 toString 메서드가 포함되어있다면 map은 생략 가능. <br><br>
+만약 Dish class 내부에 toString 메서드가 포함되어있다면 map은 생략 가능. <br>
 ```java
 String shortMenu = menu.stream().map(Dish::getName).collect(joining());
 String shortMenu = menu.stream().map(Dish::getName).collect(joining(", "));
 ```
 <br>
 
+#### 1-5. 범용 리듀싱 요약 연산
+```java
+
+
+```
+
+
 #### 2. 요소 그룹화
+* 요리 종류에 따라 그룹화 하려면?
+```java
+Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(groupingBy(Dish::getType));
+```
+<br><br>
+* 요리 종류와 칼로리 두 기준으로 동시에 그룹화 하려면?
+```java
+Map<Dish.Type, List<Dish>> caloricDishesByType = menu.stream().filter(dish -> dish.getCalories() > 500).collect(groupingBy(Dish::getType));
+// {OTHER=[french fries, pizza], MEAT=[pork, beef]}
+```
 
+<br><br>
+* 사라진 FISH 되살리기
+: filter를 사용하면, 필터 프리디케이트를 만족시키는 FISH 종류 요리가 없기 때문에 해당 키 자체가 사라진다. <br>
+```java
+Map<Dish.Type, List<Dish>> caloricDishesByType = menu.stream().collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
+// {OTHER=[french fries, pizza], MEAT=[pork, beef], FISH=[]}
 
+Map<Dish.Type, List<Dish>> caloricDishesByType = menu.stream().collect(groupingBy(Dish::getType, mapping(Dish::getName, toList())));
+```
 
+<br><br>
+*두 가지 이상의 기준을 동시에 적용해서 그룹화 하려면?
+```java
+Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.stream().collect(groupingBy(Dish::getType,
+                                                                                                groupingBy(dish -> {
+                                                                                                    if(dish.getCalories() <= 400)
+                                                                                                        return CaloricLevel.DIET;
+                                                                                                    else if(dish.getCalories() <= 700)
+                                                                                                        return CaloricLevel.NORMAL; else return CaloricLevel.FAT;
+                                                                                                })
+                                                                      )                             
+);
 
+//
+{
+MEAT = {DIET=[chicken], NORMAL=[beef], FAT=[prok]},
+FISH = {DIET=[prawns], NORMAL=[salmon]},
+OTHER = {DIET=[rice, seasonal fruit], NORMAL=[french fries, pizza]}
+}
+```
 
 ### 3. 요소 분할
 
