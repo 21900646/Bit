@@ -223,8 +223,22 @@ public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, Li
 <br><br>
 
 **2단계. 리듀싱 연산 구현**
-```
+다섯 메서드 구현
+```java
+public Supplier<Map<Boolean, List<Integer>>> supplier(){
+  return () -> new HashMap<Boolean, List<Integer>>() {{
+    put(true, new ArrayList<Integer>());
+    put(false, new ArrayList<Integer>());
+  }};
+}
 
+public BiConsumer<Map<Boolean, List<Integer>>, Integer> accumulator(){
+  return (Map<Boolean, List<Integer>> acc, Integer candidate) -> {
+    acc.get(isPrime(acc.get(true), candidate))
+        .add(candidate);
+  };
+}
+```
 3단계. 병렬 실행할 수 있는 컬렉터 만들기(가능하다면)
 4단계. finisher 메서드와 컬렉터의 characteristics 메서드
 
