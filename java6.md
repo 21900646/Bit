@@ -36,6 +36,7 @@ Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesCompara
 - 요소 수, 합계, 평균, 최대 최소값 계산 <br>
   : summarizingInt(IntSummaryStatistics), summarizingLong(LongSummaryStatistics), summarizingDouble(DoubleSummaryStatistics) <br><br>
 <br>
+
 ```java
 int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
 double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
