@@ -5,6 +5,7 @@
 - 모든 멀티코어 프로세서가 각각의 청크를 처리하도록 할당 가능. <br><br>
 
 [장점]
+기존 소스 :
 ```java
 public long iterativeSum(long n){
   long result = 0;
@@ -14,8 +15,9 @@ public long iterativeSum(long n){
   return result;
 }
 ```
--> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br>
+-> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br><br>
 
+Stream 활용 :
 ```java
 public long sequentialSum(long n){
   return Stream.iterate(1L, i -> i+1)
