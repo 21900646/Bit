@@ -110,6 +110,7 @@ public long sideEffectParallelSum(long n){
 
 
 ## 2. 포크/조인 프레임워크
+병렬스트림 내부에서 포크/조인 프레임워크를 활용하고 있음. <br>
 
 ### 2-1. Recursive Task 활용
 
