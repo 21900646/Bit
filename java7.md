@@ -40,7 +40,7 @@ public static long parallelSum(long n) {
 
 하지만, 호출해도 스트림 자체에 아무 변화 X. <br>
 이후 연산을 병렬로 수행해야함을 의미하는 불리언 플래그가 설정. <br>
-반대는 sequential임. (병렬 스트림 -> 순차 스트림) <br><br>
+반대는 sequential임. (병렬 스트림 -> 순차 스트림) <br><br><br>
 
 ### 1-2. 스트림 성능 측정
 
