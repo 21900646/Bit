@@ -76,7 +76,7 @@ public class Accumulator {
     public void add(long value) { total += value; }
 }
 ```
-<br><br>
+<br>
 위의 코드를 병렬로 바꾼다면? :
 ```java
 public long sideEffectParallelSum(long n){
