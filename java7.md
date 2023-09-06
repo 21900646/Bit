@@ -15,21 +15,30 @@ public long iterativeSum(long n){
   return result;
 }
 ```
--> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br><br><br>
-
-Stream 활용 :
+<br>
+일반 Stream 활용 :
 ```java
 public long sequentialSum(long n){
   return Stream.iterate(1L, i -> i+1)
               .limit(n)
+              .parallel()
               .reduce(0L, Long::sum);
 ```
-
-
-
+-> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br><br><br>
 <br>
 
 ### 1-1. 순차 스트림을 병렬 스트림으로 변환하기
+```java
+public static long parallelSum(long n) {
+    return Stream.iterate(1L, i -> i + 1)
+                 .limit(n)
+                 .parallel()  //  스트림을 병렬 스트림으로 변환
+                 .reduce(0L, Long::sum);
+}
+```
+![Uploading image.png…]()
+
+
 
 ### 1-2. 스트림 성능 측정
 
