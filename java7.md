@@ -42,9 +42,11 @@ public static long parallelSum(long n) {
 이후 연산을 병렬로 수행해야함을 의미하는 불리언 플래그가 설정. <br>
 반대는 sequential임. (병렬 스트림 -> 순차 스트림) <br><br><br>
 
+
+
 ### 1-2. 스트림 성능 측정
 : JMH(Java Microbenchmark Harness) 라이브러리를 이용해 성능 측정. <br>
--> 반복, 순차, 병렬 중 무엇이 가장 빠를까? <br>
+-> 반복, 순차, 병렬 중 무엇이 가장 빠를까? <br><br>
 반복 - 순차 - 병렬 순으로 빠름. <br><br>
 [이유] <br>
 - 반복 결과로 박싱된 객체를 생성하므로 이를 다시 언박싱하는 과정이 필요했다. <br>
