@@ -38,6 +38,9 @@ public static long parallelSum(long n) {
 ```
 ![image](https://github.com/21900646/Bit/assets/69943167/e8722154-a828-4570-b163-206ac1057e2d)
 
+하지만, 호출해도 스트림 자체에 아무 변화 X. <br>
+이후 연산을 병렬로 수행해야함을 의미하는 불리언 플래그가 설정. <br>
+반대는 sequential임. (병렬 스트림 -> 순차 스트림)
 
 
 
