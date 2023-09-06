@@ -105,6 +105,9 @@ public long sideEffectParallelSum(long n){
 - 스트림의 특정과 파이프라인의 중간 연산이 스트림의 특성을 어떻게 바꾸는지에 따라 과정의 성능이 달라진다. <br><br>
 
 - 최종 연산의 병합 과정(예를 들면 combiner 메서드) 비용을 살펴봐라.
+<br><br><br>
+
+
 
 ## 2. 포크/조인 프레임워크
 
