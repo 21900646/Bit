@@ -15,7 +15,7 @@ public long iterativeSum(long n){
   return result;
 }
 ```
--> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br><br>
+-> 결과  변수를 어떻게 동기화할 지, 몇 개의 스레드를 사용해야할 지 등 생각할 필요 X. <br><br><br>
 
 Stream 활용 :
 ```java
