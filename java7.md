@@ -59,7 +59,31 @@ public static long parallelSum(long n) {
 
 
 ### 1-3. 병렬 스트림의 올바른 사용법
+[문제] <br>
+: 공유된 상태를 바꾸는 알고리즘을 사용함. <br><br>
+순차 : 
+```java
+public long sideEffectParalleSum(long n) {
+    Accumulator accumulator = new Accumulator();
+    LongStream.rangeClosed(1, n).parallel().forEach(accumulator::add);
+    return accumulator.total;
+}
 
+public class Accumulator {
+    public long total = 0;
+    public void add(long value) { total += value; }
+}
+```
+위의 코드를 병렬로 바꾼다면?
+```java
+public long sideEffectParallelSum(long n){
+  Accumulator accumulator = new Accumulator();
+  LongStream.rangeClosed(1, n).parallel().forEach(accumulator::add);
+  return accumulator.total;
+```
+-> 잘못된 결과 발생. + 레이스 컨디션 발생. <br><br>
+** 레이스 컨디션 : 두 개 이상의 프로세스가 발생할 경우, 공유 자원 접근 순서에 따라 결과값이 달라짐.
+<br><br>
 
 ## 2. 포크/조인 프레임워크
 
