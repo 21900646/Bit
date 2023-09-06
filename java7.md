@@ -141,14 +141,14 @@ if(Task is small) { // 테스크가 작아 분할이 불가능
 }
 ```
 ![image](https://github.com/21900646/Bit/assets/69943167/714c64b5-9303-4910-93a9-b1db77da9c63)
-
+** compute()는 작업을 나누고, fork()는 작업을 큐에 넣는다.
 
 ### 2-2. 포크/조인 프레임워크를 제대로 사용하는 방법
 - 두 서브태스크가 모두 시작된 다음 join을 호출해야 함.
 - RecursiveTask 내에는 ForkJoinPool읭 invoke 메서드를 사용 X. (compute나 fork 메서드 직접 호출) <br>
 - 서브태스크에 fork 메서드를 호출해서 ForkJoinPool의 일정을 조절할 수 O.
 - 포크조인 프레임워크를 이용하는 병렬 계산은 디버깅하기 어렵다.
-
+<br><br>
 
 ### 2-3. 작업 훔치기
 
