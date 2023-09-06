@@ -78,6 +78,7 @@ public class Accumulator {
 ```
 <br>
 위의 코드를 병렬로 바꾼다면? :
+
 ```java
 public long sideEffectParallelSum(long n){
   Accumulator accumulator = new Accumulator();
@@ -117,6 +118,9 @@ public long sideEffectParallelSum(long n){
 
 ### 2-1. Recursive Task 활용
 
+** Recursive Action과 Recursive Task 차이 <br>
+- Recursive Action : 재귀적 결과 X.
+- Recursive Task : 재귀적 결과 O.
 
 ### 2-2. 포크/조인 프레임워크를 제대로 사용하는 방법
 
