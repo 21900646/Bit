@@ -117,12 +117,38 @@ public long sideEffectParallelSum(long n){
 병렬스트림 내부에서 포크/조인 프레임워크를 활용하고 있음. <br>
 
 ### 2-1. Recursive Task 활용
+- 스레드 풀을 사용하기 위해선, RecursiveTask<R>의 서브 클래스를 구현하면 됨. (R은 RecursiveAction 형식) <br>
+- RecursiveTask를 정의하기 위해선, 추상 메서드 compute를 구현해야 함. <br>
+```java
+protected absract R compute();
+```
+-> 태스크를 서브태스크로 분할하는 로직과 더 이상 분할할 수 없을 때 개별 서브테스크의 결과를 생산할 알고리즘을 정의한다. <br><br>
 
 ** Recursive Action과 Recursive Task 차이 <br>
 - Recursive Action : 재귀적 결과 X.
 - Recursive Task : 재귀적 결과 O.
+<br><br>
+
+정복 알고리즘의 병렬화 버전 : 
+```
+if(Task is small) { // 테스크가 작아 분할이 불가능
+    // 순차적으로 테스크 계산
+} else {
+    // 테스크를 두 서브 테스크로 분할.
+    // 테스크가 다시 서브테스크로 분할되도록 이 메서드를 재귀적으로 호출함.
+    // 모든 서브테스크의 연산이 완료될 때까지 기다림.
+    // 모든 서브 테스크의 연산이 완료될 때까지 기다리고, 결과를 합침.
+}
+```
+![image](https://github.com/21900646/Bit/assets/69943167/714c64b5-9303-4910-93a9-b1db77da9c63)
+
 
 ### 2-2. 포크/조인 프레임워크를 제대로 사용하는 방법
+- 두 서브태스크가 모두 시작된 다음 join을 호출해야 함.
+- RecursiveTask 내에는 ForkJoinPool읭 invoke 메서드를 사용 X. (compute나 fork 메서드 직접 호출) <br>
+- 서브태스크에 fork 메서드를 호출해서 ForkJoinPool의 일정을 조절할 수 O.
+- 포크조인 프레임워크를 이용하는 병렬 계산은 디버깅하기 어렵다.
+
 
 ### 2-3. 작업 훔치기
 
