@@ -4,7 +4,6 @@
 - 만드는 방법 : 컬렉션에서 parallelStream을 호출. <br>
 - 모든 멀티코어 프로세서가 각각의 청크를 처리하도록 할당 가능. <br><br>
 
-[장점]
 기존 소스 :
 ```java
 public long iterativeSum(long n){
@@ -157,9 +156,24 @@ if(Task is small) { // 테스크가 작아 분할이 불가능
 
 
 ## 3. Spliterator 인터페이스
-
+: 분할할 수 있는 반복자. 병렬 작업에 특화.<br>
+```java
+public interface Spliterator<T> {
+    boolean tryAdvance(Consumer<? super T> action);  // 요소를 순차적으로 소비 후 탐색할 요소가 있다면 참 반환.
+    Spliterator<T> trySplit(); // 일부 요소를 분할해서 두 번째 Spliterator를 생성하는 메서드.
+    long estimateSize();   // 탐색해야할 요소 수 정보를 제공.
+    int characteristics(); // Spliterator 자체의 특성 집합을 포함하는 int 반환.
+}
+```
 
 ### 3-1. 분할 과정
+![image](https://github.com/21900646/Bit/assets/69943167/b18e4855-3854-42dc-90de-736c8e46d898)
+: trySplit의 결과가 null이면 재귀 분할 과정이 종료. <br><br>
+
+[Spliterator 특성] <br>
+![image](https://github.com/21900646/Bit/assets/69943167/972af971-3a92-4818-8bb9-2bfb0a410a5e)
+
+
 
 ### 3-2. 커스텀 Spliterator 구현하기
 
