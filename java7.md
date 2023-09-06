@@ -60,8 +60,7 @@ public static long parallelSum(long n) {
 
 
 ### 1-3. 병렬 스트림의 올바른 사용법
-[문제] <br>
-: 공유된 상태를 바꾸는 알고리즘을 사용함. <br><br>
+[문제] : 공유된 상태를 바꾸는 알고리즘을 사용함. <br><br>
 순차 : 
 ```java
 public long sideEffectParalleSum(long n) {
