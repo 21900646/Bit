@@ -17,6 +17,7 @@ public long iterativeSum(long n){
 ```
 <br>
 일반 Stream 활용 :
+
 ```java
 public long sequentialSum(long n){
   return Stream.iterate(1L, i -> i+1)
