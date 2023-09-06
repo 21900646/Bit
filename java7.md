@@ -36,7 +36,8 @@ public static long parallelSum(long n) {
                  .reduce(0L, Long::sum);
 }
 ```
-![Uploading image.png…]()
+![image](https://github.com/21900646/Bit/assets/69943167/e8722154-a828-4570-b163-206ac1057e2d)
+
 
 
 
